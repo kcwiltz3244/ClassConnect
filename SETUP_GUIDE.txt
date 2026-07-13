@@ -1,0 +1,56 @@
+CLASSCONNECT 1.2 — ALL-IN-ONE SETUP
+
+YOU ALREADY COMPLETED MOST OF THE GOOGLE SETUP.
+
+1. OPEN APPS SCRIPT
+Replace the existing Code.gs with the Code.gs in this package.
+Keep your existing Google Sheet ID on the first line.
+Save the script.
+
+2. CREATE AN ADMIN KEY
+In Code.gs, find:
+  "CHANGE_THIS_ADMIN_KEY"
+Replace it with a private password only the reunion committee knows.
+Example:
+  "Tiger76PrivateKey"
+Save again.
+
+3. RUN SETUP FUNCTIONS
+Select setupSheets and click Run.
+Then select setAdminKey and click Run.
+
+4. UPDATE THE WEB APP DEPLOYMENT
+Click Deploy → Manage deployments.
+Click the pencil icon.
+Under Version, choose New version.
+Click Deploy.
+Your existing /exec URL should remain the same.
+
+5. CONNECT THE APP
+Open config.js.
+Replace:
+  PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE
+with your Web App URL ending in /exec.
+Save config.js.
+
+6. UPLOAD TO GITHUB
+Upload these files:
+- index.html
+- admin.html
+- styles.css
+- app.js
+- admin.js
+- config.js
+- manifest.webmanifest
+- service-worker.js
+- icon.svg
+
+7. ADMIN PAGE
+Open:
+  your-ClassConnect-address/admin.html
+Enter the private admin key.
+You can approve or reject pending profiles and messages.
+
+IMPORTANT SECURITY NOTE
+The admin key is protected in Apps Script Script Properties, not stored in the public website.
+Use a long, private key and do not share it with classmates.

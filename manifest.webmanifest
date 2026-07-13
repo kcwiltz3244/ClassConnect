@@ -1,0 +1,16 @@
+{
+  "name": "ClassConnect - SMSH Class of 1976",
+  "short_name": "ClassConnect",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#250039",
+  "theme_color": "#4b0877",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
