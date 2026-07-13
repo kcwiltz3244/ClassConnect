@@ -1,40 +1,37 @@
-CLASSCONNECT 1.2 — ALL-IN-ONE SETUP
+CLASSCONNECT 2.0 — PROJECT MAGNOLIA
 
-YOU ALREADY COMPLETED MOST OF THE GOOGLE SETUP.
+This is the full working build, not a design mockup.
 
-1. OPEN APPS SCRIPT
+1. APPS SCRIPT
+Open your existing ClassConnect Apps Script.
 Replace the existing Code.gs with the Code.gs in this package.
-Keep your existing Google Sheet ID on the first line.
-Save the script.
+Keep your real Google Sheet ID on the first line.
 
-2. CREATE AN ADMIN KEY
+2. ADMIN KEY
 In Code.gs, find:
-  "CHANGE_THIS_ADMIN_KEY"
-Replace it with a private password only the reunion committee knows.
-Example:
-  "Tiger76PrivateKey"
-Save again.
+  CHANGE_THIS_ADMIN_KEY
+Replace it with a private committee password.
+Save.
 
-3. RUN SETUP FUNCTIONS
-Select setupSheets and click Run.
-Then select setAdminKey and click Run.
+3. RUN FUNCTIONS
+Run setupSheets.
+Then run setAdminKey.
 
-4. UPDATE THE WEB APP DEPLOYMENT
-Click Deploy → Manage deployments.
-Click the pencil icon.
-Under Version, choose New version.
-Click Deploy.
-Your existing /exec URL should remain the same.
+4. UPDATE DEPLOYMENT
+Deploy → Manage deployments.
+Click the pencil.
+Choose New version.
+Deploy.
+Keep the same /exec URL.
 
 5. CONNECT THE APP
 Open config.js.
 Replace:
   PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE
-with your Web App URL ending in /exec.
-Save config.js.
+with your existing Web App URL ending in /exec.
 
-6. UPLOAD TO GITHUB
-Upload these files:
+6. GITHUB
+Upload:
 - index.html
 - admin.html
 - styles.css
@@ -45,12 +42,14 @@ Upload these files:
 - service-worker.js
 - icon.svg
 
-7. ADMIN PAGE
+7. ADMIN
 Open:
-  your-ClassConnect-address/admin.html
-Enter the private admin key.
-You can approve or reject pending profiles and messages.
+  your-github-pages-address/admin.html
+Enter your admin key to approve or reject profiles and messages.
 
-IMPORTANT SECURITY NOTE
-The admin key is protected in Apps Script Script Properties, not stored in the public website.
-Use a long, private key and do not share it with classmates.
+8. INTRO SCREEN
+The opening cinematic screen appears until the user taps “Skip next time.”
+To show it again, clear the site data in the browser.
+
+9. EXISTING GOOGLE SHEET
+Your current Classmates and Messages tabs remain compatible with this build.

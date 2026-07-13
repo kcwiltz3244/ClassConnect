@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#4b0877"><title>ClassConnect Admin</title><link rel="stylesheet" href="styles.css"></head>
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#2c063e">
+  <title>ClassConnect Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<header class="app-header"><div class="brand"><div class="logo">76</div><div><strong>Committee Admin</strong><small>ClassConnect</small></div></div><a class="install-btn" href="index.html" style="text-decoration:none">Back</a></header>
-<main style="padding:18px;max-width:760px;margin:auto">
-  <section class="panel">
-    <h1>Approve submissions</h1>
-    <p>Enter the admin key stored in Apps Script.</p>
-    <label class="search"><span>🔑</span><input id="adminKey" type="password" placeholder="Admin key"></label>
-    <button id="loadPending" class="primary" style="margin-top:12px">Load Pending Items</button>
+<header class="app-header">
+  <div class="brand"><div class="mini-crest">76</div><div><strong>Committee Admin</strong><small>Project Magnolia</small></div></div>
+  <a class="install-pill" href="index.html" style="text-decoration:none">Back</a>
+</header>
+<main style="max-width:880px;margin:auto;padding:18px">
+  <section class="section-block">
+    <div class="view-heading"><div><p class="eyebrow purple">COMMITTEE ACCESS</p><h1>Approve Submissions</h1></div></div>
+    <div class="home-post">
+      <label class="search-box"><span>🔑</span><input id="adminKey" type="password" placeholder="Enter admin key"></label>
+      <button id="loadPending" class="primary-button" style="margin-top:12px">Load Pending Items</button>
+    </div>
   </section>
-  <section class="panel"><h2>Pending profiles</h2><div id="pendingProfiles"></div></section>
-  <section class="panel"><h2>Pending messages</h2><div id="pendingMessages"></div></section>
+  <section class="section-block"><div class="section-title"><div><p class="eyebrow purple">PENDING</p><h2>Classmate Profiles</h2></div></div><div id="pendingProfiles"></div></section>
+  <section class="section-block"><div class="section-title"><div><p class="eyebrow purple">PENDING</p><h2>Messages</h2></div></div><div id="pendingMessages"></div></section>
 </main>
 <div id="toast" class="toast"></div>
-<script src="config.js"></script><script src="admin.js"></script>
-</body></html>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

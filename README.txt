@@ -1,13 +1,16 @@
-CLASSCONNECT 1.2
+CLASSCONNECT 2.0 — PROJECT MAGNOLIA
 
-All-in-one package:
-- App-style Progressive Web App
-- Google Sheets backend
-- Clean Apps Script
-- Classmate directory
+Included:
+- Cinematic opening experience
+- Welcome Home dashboard
+- Hallway-style navigation
+- Living yearbook directory
 - Community feed
-- Events
-- Installable home-screen app
-- Committee admin approval page
+- Memories mosaic
+- Five-decade timeline
+- Memorial experience
+- Installable PWA
+- Google Sheets backend
+- Committee admin moderation
 
 Start with SETUP_GUIDE.txt.

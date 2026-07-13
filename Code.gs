@@ -72,7 +72,7 @@ function addClassmate(data) {
   if (!name) throw new Error("Name is required.");
   SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(CLASSMATES_SHEET).appendRow([
     new Date(),"Pending",name,cleanText(data.city,50),cleanText(data.state,25),
-    cleanText(data.email,100),cleanText(data.phone,30),cleanText(data.bio,220),
+    cleanText(data.email,100),cleanText(data.phone,30),cleanText(data.bio,400),
     Boolean(data.showEmail),Boolean(data.showPhone)
   ]);
   return {ok:true};
