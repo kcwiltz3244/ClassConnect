@@ -1,4 +1,24 @@
-const SPREADSHEET_ID = "PASTE_GOOGLE_SHEET_ID_HERE";
+const SPREADSHEET_ID = "const SPREADSHEET_ID = "11TTL2NkEzjh7robNp0ic8yfBC9yTAksaBF67Zjt7gGA";
+const CLASSMATES_SHEET = "Classmates";
+const MESSAGES_SHEET = "Messages";
+
+function setupSheets() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+
+  let classmates = ss.getSheetByName(CLASSMATES_SHEET);
+  if (!classmates) classmates = ss.insertSheet(CLASSMATES_SHEET);
+  if (classmates.getLastRow() === 0) {
+    classmates.getRange(1,1,1,10).setValues([[
+      "Timestamp","Status","Name","City","State","Email","Phone","Bio","Show Email","Show Phone"
+    ]]);
+    classmates.setFrozenRows(1);
+  }
+
+  let messages = ss.getSheetByName(MESSAGES_SHEET);
+  if (!messages) messages = ss.insertSheet(MESSAGES_SHEET);
+  if (messages.getLastRow() === 0) {
+    messages.getRange(1,1,1,4).setValues([[
+      "Timestamp","Status","Author","Message"";
 const CLASSMATES_SHEET = "Classmates";
 const MESSAGES_SHEET = "Messages";
 
@@ -71,7 +91,7 @@ function addClassmate(data) {
   const name = cleanText(data.name,70);
   if (!name) throw new Error("Name is required.");
   SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(CLASSMATES_SHEET).appendRow([
-    new Date(),"Pending",name,cleanText(data.city,50),cleanText(data.state,25),
+    new Date(),"Approved",name,cleanText(data.city,50),cleanText(data.state,25),
     cleanText(data.email,100),cleanText(data.phone,30),cleanText(data.bio,400),
     Boolean(data.showEmail),Boolean(data.showPhone)
   ]);
@@ -83,7 +103,7 @@ function addMessage(data) {
   const text = cleanText(data.text,500);
   if (!author || !text) throw new Error("Name and message are required.");
   SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(MESSAGES_SHEET).appendRow([
-    new Date(),"Pending",author,text
+    new Date(),"Approved",author,text
   ]);
   return {ok:true};
 }
