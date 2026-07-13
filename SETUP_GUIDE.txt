@@ -1,55 +1,28 @@
-CLASSCONNECT 2.0 — PROJECT MAGNOLIA
+CLASSCONNECT 2.1 STREAMLINED
 
-This is the full working build, not a design mockup.
+This version keeps the Living Yearbook features but is designed to handle 100+ classmates.
 
-1. APPS SCRIPT
-Open your existing ClassConnect Apps Script.
-Replace the existing Code.gs with the Code.gs in this package.
-Keep your real Google Sheet ID on the first line.
+IMPROVEMENTS
+- Compact Hallway quick-launch buttons
+- Compact list view as the default
+- Optional photo-grid view
+- 20 classmates per page
+- Expandable details and photos
+- Faster browsing and less scrolling
+- Who's New limited to three classmates
 
-2. ADMIN KEY
-In Code.gs, find:
-  CHANGE_THIS_ADMIN_KEY
-Replace it with a private committee password.
-Save.
+INSTALL
+1. Keep the same Code.gs and Google Sheet structure from ClassConnect 2.1.
+2. Open config.js and paste your existing Apps Script /exec URL.
+3. Upload these files to GitHub:
+   index.html
+   styles.css
+   app.js
+   config.js
+   manifest.webmanifest
+   service-worker.js
+   icon.svg
+4. Commit the changes.
+5. Netlify will redeploy automatically.
 
-3. RUN FUNCTIONS
-Run setupSheets.
-Then run setAdminKey.
-
-4. UPDATE DEPLOYMENT
-Deploy → Manage deployments.
-Click the pencil.
-Choose New version.
-Deploy.
-Keep the same /exec URL.
-
-5. CONNECT THE APP
-Open config.js.
-Replace:
-  PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE
-with your existing Web App URL ending in /exec.
-
-6. GITHUB
-Upload:
-- index.html
-- admin.html
-- styles.css
-- app.js
-- admin.js
-- config.js
-- manifest.webmanifest
-- service-worker.js
-- icon.svg
-
-7. ADMIN
-Open:
-  your-github-pages-address/admin.html
-Enter your admin key to approve or reject profiles and messages.
-
-8. INTRO SCREEN
-The opening cinematic screen appears until the user taps “Skip next time.”
-To show it again, clear the site data in the browser.
-
-9. EXISTING GOOGLE SHEET
-Your current Classmates and Messages tabs remain compatible with this build.
+This is a front-end replacement only. You do not need to change Apps Script again.

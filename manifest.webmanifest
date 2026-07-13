@@ -1,17 +1,9 @@
 {
-  "name": "ClassConnect \u2014 Project Magnolia",
-  "short_name": "ClassConnect",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#21002f",
-  "theme_color": "#4b0877",
-  "description": "The living yearbook for the St. Martinville Senior High School Class of 1976.",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+  "name":"ClassConnect 2.1 Streamlined",
+  "short_name":"ClassConnect",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#21002f",
+  "theme_color":"#4b0877",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
