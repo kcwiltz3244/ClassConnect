@@ -1,19 +1,25 @@
-CLASSCONNECT 2.1 STREAMLINED
+CLASSCONNECT 2.1 REFINED BUILD
 
-This version keeps the Living Yearbook features but is designed to handle 100+ classmates.
+This is the working build, not an image.
 
-IMPROVEMENTS
-- Compact Hallway quick-launch buttons
-- Compact list view as the default
-- Optional photo-grid view
+DESIGN DIRECTION
+- Restores the richer Project Magnolia appearance.
+- Keeps each section on its own app screen.
+- Uses a desktop sidebar and mobile bottom navigation.
+- Adds selected practical features inspired by Version 3 without changing the whole project.
+
+ADDED FEATURES
+- Global classmate search
+- Compact list and grid directory views
 - 20 classmates per page
-- Expandable details and photos
-- Faster browsing and less scrolling
-- Who's New limited to three classmates
+- Birthdays page and monthly summary
+- Class city summary
+- Upcoming event panel
+- Separate screens for each feature
 
-INSTALL
-1. Keep the same Code.gs and Google Sheet structure from ClassConnect 2.1.
-2. Open config.js and paste your existing Apps Script /exec URL.
+INSTALLATION
+1. Open config.js.
+2. Paste your current Apps Script /exec URL.
 3. Upload these files to GitHub:
    index.html
    styles.css
@@ -22,7 +28,8 @@ INSTALL
    manifest.webmanifest
    service-worker.js
    icon.svg
-4. Commit the changes.
-5. Netlify will redeploy automatically.
+4. Commit the update.
+5. Netlify will publish it automatically.
 
-This is a front-end replacement only. You do not need to change Apps Script again.
+BACKEND
+Keep the same ClassConnect 2.1 Code.gs and Google Sheet. No backend update is required.

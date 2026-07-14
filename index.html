@@ -4,169 +4,254 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#2c063e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ClassConnect">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <title>ClassConnect 2.1</title>
+  <title>ClassConnect — Living Yearbook</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<section id="introScreen" class="intro">
-  <div class="intro-copy">
-    <div class="crest">76</div>
-    <p>ST. MARTINVILLE SENIOR HIGH SCHOOL</p>
+<section id="introScreen" class="intro-screen">
+  <div class="intro-content">
+    <div class="crest-large">76</div>
+    <p class="intro-kicker">ST. MARTINVILLE SENIOR HIGH SCHOOL</p>
     <h1>ClassConnect</h1>
-    <h2>The Living Yearbook</h2>
-    <p class="tagline">Fifty years later… our stories are still being written.</p>
-    <button id="enterAppBtn" class="gold-btn">Enter ClassConnect</button>
-    <button id="skipIntroBtn" class="quiet">Skip next time</button>
+    <h2>Class of 1976</h2>
+    <p>Fifty years later… we’re still family.</p>
+    <button id="enterAppBtn" class="gold-button">Enter ClassConnect</button>
+    <button id="skipIntroBtn" class="quiet-button">Skip next time</button>
   </div>
 </section>
 
-<div id="appShell" class="hidden">
-<header class="topbar">
-  <div class="brand"><span>76</span><div><strong>ClassConnect</strong><small>Living Yearbook</small></div></div>
-  <button id="installBtn" hidden>Install</button>
-</header>
-
-<main>
-<section id="homeView" class="view active">
-  <div class="welcome">
-    <div>
-      <p id="greeting" class="eyebrow">WELCOME HOME</p>
-      <h1>Class of 1976</h1>
-      <p>Every classmate has a story worth preserving.</p>
+<div id="appShell" class="app-shell hidden">
+  <aside class="sidebar">
+    <div class="school-brand">
+      <div class="sidebar-crest">76</div>
+      <div>
+        <strong>ST. MARTINVILLE</strong>
+        <small>SENIOR HIGH SCHOOL</small>
+        <em>CLASS OF 1976</em>
+      </div>
     </div>
-    <div class="welcome-actions">
-      <button data-open="profileModal" class="gold-btn">Add My Story</button>
-      <button data-open="messageModal" class="outline-btn">Post a Message</button>
-    </div>
+
+    <nav class="side-nav">
+      <button class="active" data-nav="homeView"><span>🏠</span>Home</button>
+      <button data-nav="peopleView"><span>👥</span>Living Yearbook</button>
+      <button data-nav="feedView"><span>💬</span>Community Feed</button>
+      <button data-nav="memoriesView"><span>📸</span>Memories</button>
+      <button data-nav="eventsView"><span>📅</span>Events</button>
+      <button data-nav="memorialView"><span>🕊️</span>In Memory</button>
+      <button data-nav="birthdaysView"><span>🎂</span>Birthdays</button>
+      <button data-nav="mapView"><span>📍</span>Class Map</button>
+    </nav>
+
+    <section class="sidebar-event">
+      <p>UPCOMING EVENT</p>
+      <strong>50th Reunion Memories</strong>
+      <small>Class of 1976</small>
+    </section>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar">
+      <button id="menuBtn" class="menu-button">☰</button>
+      <div class="top-title">Living Yearbook</div>
+      <label class="top-search">
+        <input id="globalSearch" type="search" placeholder="Search classmates...">
+        <span>⌕</span>
+      </label>
+      <button id="installBtn" class="install-button" hidden>Install</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <section class="hero">
+          <div class="hero-copy">
+            <p id="greeting" class="eyebrow gold">WELCOME BACK</p>
+            <h1>Class of 1976</h1>
+            <p>Every classmate has a story worth preserving.</p>
+            <div class="hero-actions">
+              <button data-open="profileModal" class="gold-button">✎ Add My Story</button>
+              <button data-open="messageModal" class="outline-button">💬 Post a Message</button>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <article><span>👥</span><strong id="classmateCount">0</strong><small>Classmates</small></article>
+            <article><span>💬</span><strong id="messageCount">0</strong><small>Messages</small></article>
+            <article><span>🎂</span><strong id="birthdayCount">0</strong><small>Birthdays This Month</small></article>
+          </div>
+        </section>
+
+        <section class="quick-access">
+          <button data-nav="peopleView"><span>👥</span><div><strong>Living Yearbook</strong><small>Then & Now profiles</small></div></button>
+          <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Class updates</small></div></button>
+          <button data-nav="memoriesView"><span>📸</span><div><strong>Memories Gallery</strong><small>Photos through time</small></div></button>
+          <button data-nav="storyView"><span>📖</span><div><strong>Our Story</strong><small>1976 to today</small></div></button>
+          <button data-nav="eventsView"><span>📅</span><div><strong>Events Calendar</strong><small>What’s coming up</small></div></button>
+          <button data-nav="memorialView"><span>🕊️</span><div><strong>In Memory</strong><small>Forever remembered</small></div></button>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="dashboard-card">
+            <header><strong>WHO’S NEW</strong><button data-nav="peopleView">View all</button></header>
+            <div id="newClassmates"></div>
+          </article>
+
+          <article class="dashboard-card wide">
+            <header><strong>RECENT CLASS FEED</strong><button data-nav="feedView">View all</button></header>
+            <div id="homeFeed"></div>
+          </article>
+
+          <article class="dashboard-card">
+            <header><strong>UPCOMING EVENTS</strong><button data-nav="eventsView">View all</button></header>
+            <div class="event-summary">
+              <span class="date-box">JUN<br><b>26</b></span>
+              <div><strong>50th Reunion Memories</strong><small>St. Martinville, LA</small></div>
+            </div>
+            <div class="event-summary">
+              <span class="date-box">NEXT</span>
+              <div><strong>Plan a Get-Together</strong><small>Suggest one in the feed</small></div>
+            </div>
+          </article>
+
+          <article class="dashboard-card birthdays-card">
+            <header><strong>BIRTHDAYS THIS MONTH</strong><button data-nav="birthdaysView">View all</button></header>
+            <div id="birthdayStrip" class="birthday-strip"></div>
+          </article>
+
+          <article class="quote-card">
+            <blockquote>“We may be fifty years older, but the memories are still as young as we are.”</blockquote>
+            <small>— Class of 1976</small>
+          </article>
+        </section>
+      </section>
+
+      <section id="peopleView" class="view">
+        <div class="page-heading">
+          <div><p class="eyebrow purple">THEN & NOW</p><h1>Living Yearbook</h1></div>
+          <button data-open="profileModal" class="round-button">＋</button>
+        </div>
+
+        <div class="directory-controls">
+          <label class="directory-search"><span>⌕</span><input id="directorySearch" type="search" placeholder="Search name, city, state, career"></label>
+          <div class="view-buttons">
+            <button id="listViewBtn" class="active">☷ List</button>
+            <button id="gridViewBtn">▦ Grid</button>
+          </div>
+        </div>
+
+        <div class="privacy-note">🔒 Contact information appears only when classmates choose to share it.</div>
+        <div id="directoryGrid" class="directory list-mode"></div>
+        <p id="directoryEmpty" class="empty-state" hidden>No classmates match your search.</p>
+        <div id="pagination" class="pagination"></div>
+      </section>
+
+      <section id="feedView" class="view">
+        <div class="page-heading">
+          <div><p class="eyebrow purple">COMMUNITY</p><h1>Class Feed</h1></div>
+          <button data-open="messageModal" class="round-button">＋</button>
+        </div>
+        <div id="messageFeed" class="feed-list"></div>
+      </section>
+
+      <section id="memoriesView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">THEN & NOW</p><h1>Memories</h1></div></div>
+        <a class="feature-panel" href="https://qrowdpics.com/smsh50reunion" target="_blank" rel="noopener">
+          <span>📸</span><div><strong>50th Reunion Gallery</strong><small>View and share reunion photos</small></div><b>›</b>
+        </a>
+      </section>
+
+      <section id="storyView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">FIVE DECADES</p><h1>Our Story</h1></div></div>
+        <div class="timeline">
+          <article><b>1972</b><div><strong>Freshman Year</strong><p>A new chapter began.</p></div></article>
+          <article><b>1976</b><div><strong>Graduation</strong><p>We stepped into the world.</p></div></article>
+          <article><b>1986</b><div><strong>10-Year Reunion</strong><p>Old friends, new stories.</p></div></article>
+          <article><b>2026</b><div><strong>50-Year Reunion</strong><p>We came home again.</p></div></article>
+          <article><b>Today</b><div><strong>ClassConnect</strong><p>Our story continues.</p></div></article>
+        </div>
+      </section>
+
+      <section id="eventsView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">WHAT’S NEXT</p><h1>Events</h1></div></div>
+        <article class="info-panel"><strong>50th Reunion Memories</strong><p>Relive the milestone weekend through the class gallery.</p></article>
+        <article class="info-panel"><strong>Suggest the Next Gathering</strong><p>Use the class feed to suggest lunches, calls, and future reunions.</p></article>
+      </section>
+
+      <section id="birthdaysView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">CELEBRATE</p><h1>Birthdays</h1></div></div>
+        <div id="birthdayList" class="birthday-list"></div>
+      </section>
+
+      <section id="mapView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">WHERE WE ARE NOW</p><h1>Class Map</h1></div></div>
+        <div class="map-placeholder">
+          <span>📍</span>
+          <h2>Class Map</h2>
+          <p>Classmates’ cities will be organized here as the directory grows.</p>
+          <div id="cityList" class="city-list"></div>
+        </div>
+      </section>
+
+      <section id="memorialView" class="view memorial-view">
+        <div class="candle">🕯️</div>
+        <p class="eyebrow gold">IN LOVING MEMORY</p>
+        <h1>Forever Part of Our Class</h1>
+        <p>Their place in our story remains.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="active" data-nav="homeView"><span>🏠</span><small>Home</small></button>
+      <button data-nav="peopleView"><span>👥</span><small>People</small></button>
+      <button data-nav="feedView"><span>💬</span><small>Feed</small></button>
+      <button data-nav="storyView"><span>📖</span><small>Story</small></button>
+      <button data-nav="eventsView"><span>📅</span><small>Events</small></button>
+    </nav>
   </div>
-
-  <div class="stats">
-    <article><strong id="classmateCount">0</strong><small>Classmates</small></article>
-    <article><strong id="messageCount">0</strong><small>Messages</small></article>
-    <article><strong id="birthdayCount">0</strong><small>Birthdays This Month</small></article>
-  </div>
-
-  <section class="block">
-    <div class="heading"><div><p class="eyebrow purple">QUICK ACCESS</p><h2>The Hallway</h2></div></div>
-    <div class="hallway-compact">
-      <button data-nav="peopleView"><span>👥</span><strong>Classmates</strong></button>
-      <button data-nav="feedView"><span>💬</span><strong>Community</strong></button>
-      <button data-nav="memoriesView"><span>📸</span><strong>Memories</strong></button>
-      <button data-nav="storyView"><span>📖</span><strong>Our Story</strong></button>
-      <button data-nav="eventsView"><span>📅</span><strong>Events</strong></button>
-      <button data-nav="memorialView"><span>🕊️</span><strong>In Memory</strong></button>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="heading"><div><p class="eyebrow purple">JUST ADDED</p><h2>Who’s New</h2></div><button data-nav="peopleView">View all</button></div>
-    <div id="newClassmates" class="new-strip"></div>
-  </section>
-
-  <section class="block">
-    <div class="heading"><div><p class="eyebrow purple">RECENT</p><h2>Class Feed</h2></div><button data-nav="feedView">View all</button></div>
-    <div id="homeFeed"></div>
-  </section>
-</section>
-
-<section id="peopleView" class="view">
-  <div class="page-head">
-    <div><p class="eyebrow purple">LIVING YEARBOOK</p><h1>Classmates</h1></div>
-    <button data-open="profileModal" class="round">＋</button>
-  </div>
-
-  <div class="directory-tools">
-    <label class="search"><span>🔎</span><input id="directorySearch" type="search" placeholder="Search name, city, state, career"></label>
-    <div class="view-toggle">
-      <button id="listViewBtn" class="active">☷ List</button>
-      <button id="gridViewBtn">▦ Grid</button>
-    </div>
-  </div>
-
-  <div class="privacy">🔒 Contact details appear only when classmates choose to share them.</div>
-  <div id="directoryGrid" class="directory list-mode"></div>
-  <p id="directoryEmpty" class="empty" hidden>No classmates found.</p>
-  <div id="pagination" class="pagination"></div>
-</section>
-
-<section id="feedView" class="view">
-  <div class="page-head"><div><p class="eyebrow purple">COMMUNITY</p><h1>Class Feed</h1></div><button data-open="messageModal" class="round">＋</button></div>
-  <div id="messageFeed" class="feed"></div>
-</section>
-
-<section id="memoriesView" class="view">
-  <div class="page-head"><div><p class="eyebrow purple">THEN & NOW</p><h1>Memories</h1></div></div>
-  <a class="feature-link" href="https://qrowdpics.com/smsh50reunion" target="_blank" rel="noopener"><span>📸</span><div><strong>50th Reunion Gallery</strong><small>Open all class photos</small></div><b>›</b></a>
-</section>
-
-<section id="storyView" class="view">
-  <div class="page-head"><div><p class="eyebrow purple">FIVE DECADES</p><h1>Our Story</h1></div></div>
-  <div class="timeline">
-    <article><b>1972</b><div><strong>Freshman Year</strong><p>A new chapter began.</p></div></article>
-    <article><b>1976</b><div><strong>Graduation</strong><p>We walked into the world.</p></div></article>
-    <article><b>1986</b><div><strong>10-Year Reunion</strong><p>Old friends, new stories.</p></div></article>
-    <article><b>2026</b><div><strong>50-Year Reunion</strong><p>We came home again.</p></div></article>
-    <article><b>Today</b><div><strong>ClassConnect</strong><p>Our story continues.</p></div></article>
-  </div>
-</section>
-
-<section id="eventsView" class="view">
-  <div class="page-head"><div><p class="eyebrow purple">WHAT’S NEXT</p><h1>Events</h1></div></div>
-  <article class="info-card"><strong>Plan the Next Gathering</strong><p>Use the feed to suggest lunches, calls, and future reunions.</p></article>
-</section>
-
-<section id="memorialView" class="view memorial">
-  <div class="candle">🕯️</div><p class="eyebrow">IN LOVING MEMORY</p><h1>Forever Part of Our Class</h1>
-  <p>Their place in our story remains.</p>
-</section>
-
-<section id="moreView" class="view">
-  <div class="page-head"><div><p class="eyebrow purple">MORE</p><h1>ClassConnect</h1></div></div>
-  <div class="menu">
-    <a href="https://qrowdpics.com/smsh50reunion" target="_blank"><span>📸</span><div><strong>Photo Gallery</strong><small>Reunion memories</small></div><b>›</b></a>
-    <button data-open="profileModal"><span>👤</span><div><strong>Add My Story</strong><small>Join the directory</small></div><b>›</b></button>
-    <button data-open="messageModal"><span>💬</span><div><strong>Post a Message</strong><small>Share with classmates</small></div><b>›</b></button>
-    <button id="refreshBtn"><span>🔄</span><div><strong>Refresh</strong><small>Load newest information</small></div><b>›</b></button>
-  </div>
-</section>
-</main>
-
-<nav class="bottom-nav">
-  <button class="active" data-nav="homeView"><span>🏠</span><small>Home</small></button>
-  <button data-nav="peopleView"><span>👥</span><small>People</small></button>
-  <button data-nav="feedView"><span>💬</span><small>Feed</small></button>
-  <button data-nav="storyView"><span>📖</span><small>Story</small></button>
-  <button data-nav="moreView"><span>☰</span><small>More</small></button>
-</nav>
 </div>
 
-<div id="profileModal" class="modal"><div class="sheet">
-<button class="close" data-close>×</button><h2>Add My Story</h2>
-<form id="profileForm">
-<label>Full name<input name="name" required maxlength="70"></label>
-<div class="two"><label>City<input name="city"></label><label>State<input name="state"></label></div>
-<label>Birthday<input name="birthday" type="date"></label>
-<label>Career / life chapter<input name="career" maxlength="100"></label>
-<label>Senior photo URL<input name="thenPhoto" type="url"></label>
-<label>Current photo URL<input name="nowPhoto" type="url"></label>
-<label>Email<input name="email" type="email"></label>
-<label>Phone<input name="phone"></label>
-<label>My journey since graduation<textarea name="bio" maxlength="500"></textarea></label>
-<fieldset><legend>Show in directory</legend>
-<label class="check"><input type="checkbox" name="showEmail"> Email</label>
-<label class="check"><input type="checkbox" name="showPhone"> Phone</label>
-<label class="check"><input type="checkbox" name="showBirthday"> Birthday</label>
-</fieldset>
-<button class="primary" type="submit">Add Me to the Yearbook</button>
-</form></div></div>
+<div id="profileModal" class="modal">
+  <div class="sheet">
+    <button class="close" data-close>×</button>
+    <h2>Add My Story</h2>
+    <p>Your information appears automatically after submission.</p>
+    <form id="profileForm">
+      <label>Full name<input name="name" required maxlength="70"></label>
+      <div class="two-column"><label>City<input name="city"></label><label>State<input name="state"></label></div>
+      <label>Birthday<input name="birthday" type="date"></label>
+      <label>Career / life chapter<input name="career" maxlength="100"></label>
+      <label>Senior photo URL<input name="thenPhoto" type="url"></label>
+      <label>Current photo URL<input name="nowPhoto" type="url"></label>
+      <label>Email<input name="email" type="email"></label>
+      <label>Phone<input name="phone"></label>
+      <label>My journey since graduation<textarea name="bio" maxlength="500"></textarea></label>
+      <fieldset><legend>Show in directory</legend>
+        <label class="check"><input type="checkbox" name="showEmail"> Email</label>
+        <label class="check"><input type="checkbox" name="showPhone"> Phone</label>
+        <label class="check"><input type="checkbox" name="showBirthday"> Birthday</label>
+      </fieldset>
+      <button class="primary-button" type="submit">Add Me to the Yearbook</button>
+    </form>
+  </div>
+</div>
 
-<div id="messageModal" class="modal"><div class="sheet">
-<button class="close" data-close>×</button><h2>Post a Message</h2>
-<form id="messageForm"><label>Your name<input name="author" required></label><label>Message<textarea name="text" required maxlength="500"></textarea></label><button class="primary" type="submit">Post Message</button></form>
-</div></div>
+<div id="messageModal" class="modal">
+  <div class="sheet">
+    <button class="close" data-close>×</button>
+    <h2>Post a Message</h2>
+    <form id="messageForm">
+      <label>Your name<input name="author" required></label>
+      <label>Message<textarea name="text" required maxlength="500"></textarea></label>
+      <button class="primary-button" type="submit">Post Message</button>
+    </form>
+  </div>
+</div>
 
 <div id="toast" class="toast"></div>
-<script src="config.js"></script><script src="app.js"></script>
-</body></html>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
