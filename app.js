@@ -42,7 +42,7 @@ function renderDirectory(reset=false){
     <div class="person-details">
       ${c.favoriteMemory?`<div class="memory-quote">${esc(c.favoriteMemory)}</div>`:""}
       <p class="bio-copy">${esc(c.bio||"Their story is waiting to be shared.")}</p>
-      ${c.birthday?`<p>🎂 ${new Date(c.birthday+"T00:00:00").toLocaleDateString(undefined,{month:"long",day:"numeric"})}</p>`:""}
+     ${c.birthday?`<p>🎂 ${new Date(c.birthday).toLocaleDateString(undefined,{month:"long",day:"numeric"})}</p>`:""}
       <div class="contacts">
         ${c.showEmail&&c.email?`<a href="mailto:${encodeURIComponent(c.email)}">✉️ Email</a>`:""}
         ${c.showPhone&&c.phone?`<a href="tel:${esc(c.phone)}">📞 Call</a>`:""}
