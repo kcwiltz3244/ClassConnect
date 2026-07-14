@@ -2,13 +2,14 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const API_URL=(window.CLASSCONNECT_CONFIG?.apiUrl||"").trim();
 const API_READY=API_URL&&!API_URL.includes("PASTE_YOUR");
 const PAGE_SIZE=20;
-let classmates=[],messages=[],filtered=[],page=1,viewMode="list",deferredPrompt=null;
+const WELCOME_SKIP_KEY="cc_skip_intro_until";
+let classmates=[],messages=[],filtered=[],page=1,viewMode="list",deferredPrompt=null,profilePhotoData="";
 
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 const initials=name=>String(name||"").trim().split(/\s+/).slice(0,2).map(x=>x[0]||"").join("").toUpperCase()||"76";
 
-function enterApp(skip=false){
-  if(skip)localStorage.setItem("cc_skip_intro","true");
+function enterApp(skipHours=0){
+  if(skipHours>0)localStorage.setItem(WELCOME_SKIP_KEY,String(Date.now()+skipHours*60*60*1000));
   $("#introScreen").classList.add("hidden");
   $("#appShell").classList.remove("hidden");
 }
@@ -19,8 +20,11 @@ function navTo(id){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function avatar(c,cls="person-avatar"){
+  if(/^https?:\/\//i.test(String(c.profilePhoto||""))) return `<div class="${cls}"><img src="${esc(c.profilePhoto)}" alt="${esc(c.name)}"></div>`;
   return `<div class="${cls}">${esc(initials(c.name))}</div>`;
 }
+function showWelcome(){localStorage.removeItem(WELCOME_SKIP_KEY);$("#appShell").classList.add("hidden");$("#introScreen").classList.remove("hidden");window.scrollTo({top:0})}
+function safeBirthday(value){if(!value)return "";const d=new Date(value);return Number.isNaN(d.getTime())?"":d.toLocaleDateString(undefined,{month:"long",day:"numeric"})}
 function renderDirectory(reset=false){
   if(reset)page=1;
   const q=$("#directorySearch").value.trim().toLowerCase();
@@ -42,7 +46,7 @@ function renderDirectory(reset=false){
     <div class="person-details">
       ${c.favoriteMemory?`<div class="memory-quote">${esc(c.favoriteMemory)}</div>`:""}
       <p class="bio-copy">${esc(c.bio||"Their story is waiting to be shared.")}</p>
-    ${c.birthday?`<p>🎂 ${new Date(c.birthday).toLocaleDateString(undefined,{month:"long",day:"numeric"})}</p>`:""}
+      ${safeBirthday(c.birthday)?`<p>🎂 ${safeBirthday(c.birthday)}</p>`:""}
       <div class="contacts">
         ${c.showEmail&&c.email?`<a href="mailto:${encodeURIComponent(c.email)}">✉️ Email</a>`:""}
         ${c.showPhone&&c.phone?`<a href="tel:${esc(c.phone)}">📞 Call</a>`:""}
@@ -82,8 +86,8 @@ function renderMessages(){
   $("#messageCount").textContent=messages.length;
 }
 function renderBirthdays(){
-  const month=new Date().getMonth()+1;
-  $("#birthdayCount").textContent=classmates.filter(c=>c.birthday&&Number(String(c.birthday).slice(5,7))===month).length;
+  const month=new Date().getMonth();
+  $("#birthdayCount").textContent=classmates.filter(c=>{const d=new Date(c.birthday);return c.birthday&&!Number.isNaN(d.getTime())&&d.getMonth()===month}).length;
 }
 function toast(t){
   const e=$("#toast");e.textContent=t;e.classList.add("show");
@@ -125,9 +129,10 @@ async function loadData(){
   }
 }
 
-$("#enterAppBtn").onclick=()=>enterApp(false);
-$("#skipIntroBtn").onclick=()=>enterApp(true);
-if(localStorage.getItem("cc_skip_intro")==="true")enterApp(false);
+$("#enterAppBtn").onclick=()=>enterApp(0);
+$("#skipIntroBtn").onclick=()=>enterApp(24);
+$("#showWelcomeBtn").onclick=showWelcome;
+if(Number(localStorage.getItem(WELCOME_SKIP_KEY)||0)>Date.now())enterApp(0);
 
 $("#menuBtn").onclick=()=>$(".sidebar").classList.toggle("open");
 $$("[data-nav]").forEach(b=>b.onclick=()=>navTo(b.dataset.nav));
@@ -154,6 +159,18 @@ $("#gridViewBtn").onclick=()=>{
   renderDirectory(false);
 };
 
+
+async function resizePhoto(file){
+  if(!file)return "";
+  if(!file.type.startsWith("image/"))throw new Error("Please choose an image file.");
+  if(file.size>12*1024*1024)throw new Error("Please choose a photo smaller than 12 MB.");
+  const bitmap=await createImageBitmap(file),max=800,scale=Math.min(1,max/Math.max(bitmap.width,bitmap.height));
+  const canvas=document.createElement("canvas");canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+  canvas.getContext("2d").drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+  return canvas.toDataURL("image/jpeg",.82);
+}
+$("#profilePhotoInput").onchange=async e=>{try{profilePhotoData=await resizePhoto(e.target.files[0]);$("#photoPreview").innerHTML=profilePhotoData?`<img src="${profilePhotoData}" alt="Profile preview">`:"";$("#photoPreview").classList.toggle("hidden",!profilePhotoData)}catch(error){profilePhotoData="";e.target.value="";$("#photoPreview").classList.add("hidden");toast(error.message)}};
+
 $("#profileForm").onsubmit=async e=>{
   e.preventDefault();
   if(!API_READY)return toast("Connect Apps Script first.");
@@ -169,9 +186,12 @@ $("#profileForm").onsubmit=async e=>{
     phone:f.get("phone").trim(),
     bio:f.get("bio").trim(),
     showEmail:f.get("showEmail")==="on",
-    showPhone:f.get("showPhone")==="on"
+    showPhone:f.get("showPhone")==="on",
+    profilePhotoData
   });
   e.target.reset();
+  profilePhotoData="";
+  $("#photoPreview").classList.add("hidden");
   e.target.closest(".modal").classList.remove("open");
   toast("Your story was added.");
   setTimeout(loadData,1200);
