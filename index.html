@@ -20,7 +20,7 @@
     <h2>The Living Yearbook</h2>
     <p>Fifty years later… our stories are still being written.</p>
     <button id="enterAppBtn" class="gold-button">Enter ClassConnect</button>
-    <button id="skipIntroBtn" class="quiet-button">Skip for 24 hours</button>
+   <button id="skipIntroBtn" class="quiet-button">Skip</button>
   </div>
 </section>
 
@@ -54,20 +54,20 @@
 
   <div class="main-shell">
     <header class="topbar">
-      <button id="menuBtn" class="menu-button">☰</button>
+      <button "menuBtn" class="menu-button">☰</button>
       <div class="top-title">The Living Yearbook</div>
       <label class="top-search">
-        <input id="globalSearch" type="search" placeholder="Find a classmate...">
+        <input "globalSearch" type="search" placeholder="Find a classmate...">
         <span>⌕</span>
       </label>
-      <button id="installBtn" class="install-button" hidden>Install</button>
+      <button "installBtn" class="install-button" hidden>Install</button>
     </header>
 
     <main>
-      <section id="homeView" class="view active">
+      <section "homeView" class="view active">
         <section class="hero">
           <div class="hero-copy">
-            <p id="greeting" class="eyebrow gold">WELCOME BACK</p>
+            <p "greeting" class="eyebrow gold">WELCOME BACK</p>
             <h1>Class of 1976</h1>
             <p>Every classmate has a story worth preserving.</p>
             <div class="hero-actions">
@@ -77,9 +77,9 @@
           </div>
 
           <div class="hero-stats">
-            <article><span>👥</span><strong id="classmateCount">0</strong><small>Classmates</small></article>
-            <article><span>💬</span><strong id="messageCount">0</strong><small>Messages</small></article>
-            <article><span>🎂</span><strong id="birthdayCount">0</strong><small>Birthdays This Month</small></article>
+            <article><span>👥</span><strong "classmateCount">0</strong><small>Classmates</small></article>
+            <article><span>💬</span><strong "messageCount">0</strong><small>Messages</small></article>
+            <article><span>🎂</span><strong "birthdayCount">0</strong><small>Birthdays This Month</small></article>
           </div>
         </section>
 
@@ -95,12 +95,12 @@
         <section class="dashboard-grid">
           <article class="dashboard-card">
             <header><strong>WHO’S NEW</strong><button data-nav="peopleView">View all</button></header>
-            <div id="newClassmates"></div>
+            <div "newClassmates"></div>
           </article>
 
           <article class="dashboard-card wide">
             <header><strong>RECENT CLASS FEED</strong><button data-nav="feedView">View all</button></header>
-            <div id="homeFeed"></div>
+            <div "homeFeed"></div>
           </article>
 
           <article class="quote-card">
@@ -111,7 +111,7 @@
         </section>
       </section>
 
-      <section id="peopleView" class="view">
+      <section "peopleView" class="view">
         <div class="page-heading">
           <div>
             <p class="eyebrow purple">THE LIVING YEARBOOK</p>
@@ -122,7 +122,7 @@
         </div>
 
         <div class="directory-controls">
-          <label class="directory-search"><span>⌕</span><input id="directorySearch" type="search" placeholder="Search by name, city, state, or career"></label>
+          <label class="directory-search"><span>⌕</span><input "directorySearch" type="search" placeholder="Search by name, city, state, or career"></label>
           <div class="view-buttons">
             <button id="listViewBtn" class="active">☷ List</button>
             <button id="gridViewBtn">▦ Cards</button>
