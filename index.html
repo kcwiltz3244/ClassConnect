@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-title" content="ClassConnect">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <title>ClassConnect — Living Yearbook</title>
+  <title>ClassConnect — Where Are They Now?</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,8 +17,8 @@
     <div class="crest-large">76</div>
     <p class="intro-kicker">ST. MARTINVILLE SENIOR HIGH SCHOOL</p>
     <h1>ClassConnect</h1>
-    <h2>Class of 1976</h2>
-    <p>Fifty years later… we’re still family.</p>
+    <h2>The Living Yearbook</h2>
+    <p>Fifty years later… our stories are still being written.</p>
     <button id="enterAppBtn" class="gold-button">Enter ClassConnect</button>
     <button id="skipIntroBtn" class="quiet-button">Skip next time</button>
   </div>
@@ -37,28 +37,26 @@
 
     <nav class="side-nav">
       <button class="active" data-nav="homeView"><span>🏠</span>Home</button>
-      <button data-nav="peopleView"><span>👥</span>Living Yearbook</button>
+      <button data-nav="peopleView"><span>👥</span>Where Are They Now?</button>
       <button data-nav="feedView"><span>💬</span>Community Feed</button>
       <button data-nav="memoriesView"><span>📸</span>Memories</button>
+      <button data-nav="storyView"><span>📖</span>Our Story</button>
       <button data-nav="eventsView"><span>📅</span>Events</button>
       <button data-nav="memorialView"><span>🕊️</span>In Memory</button>
-      <button data-nav="birthdaysView"><span>🎂</span>Birthdays</button>
-      <button data-nav="mapView"><span>📍</span>Class Map</button>
     </nav>
 
-    <section class="sidebar-event">
-      <p>UPCOMING EVENT</p>
-      <strong>50th Reunion Memories</strong>
-      <small>Class of 1976</small>
-    </section>
+    <div class="sidebar-note">
+      <p>THE LIVING YEARBOOK</p>
+      <strong>Our stories did not end in 1976.</strong>
+    </div>
   </aside>
 
   <div class="main-shell">
     <header class="topbar">
       <button id="menuBtn" class="menu-button">☰</button>
-      <div class="top-title">Living Yearbook</div>
+      <div class="top-title">The Living Yearbook</div>
       <label class="top-search">
-        <input id="globalSearch" type="search" placeholder="Search classmates...">
+        <input id="globalSearch" type="search" placeholder="Find a classmate...">
         <span>⌕</span>
       </label>
       <button id="installBtn" class="install-button" hidden>Install</button>
@@ -85,11 +83,11 @@
         </section>
 
         <section class="quick-access">
-          <button data-nav="peopleView"><span>👥</span><div><strong>Living Yearbook</strong><small>Then & Now profiles</small></div></button>
-          <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Class updates</small></div></button>
-          <button data-nav="memoriesView"><span>📸</span><div><strong>Memories Gallery</strong><small>Photos through time</small></div></button>
+          <button data-nav="peopleView"><span>👥</span><div><strong>Where Are They Now?</strong><small>Stories from classmates</small></div></button>
+          <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Greetings and updates</small></div></button>
+          <button data-nav="memoriesView"><span>📸</span><div><strong>Memories Gallery</strong><small>Photos through the years</small></div></button>
           <button data-nav="storyView"><span>📖</span><div><strong>Our Story</strong><small>1976 to today</small></div></button>
-          <button data-nav="eventsView"><span>📅</span><div><strong>Events Calendar</strong><small>What’s coming up</small></div></button>
+          <button data-nav="eventsView"><span>📅</span><div><strong>Events</strong><small>What’s coming up</small></div></button>
           <button data-nav="memorialView"><span>🕊️</span><div><strong>In Memory</strong><small>Forever remembered</small></div></button>
         </section>
 
@@ -104,25 +102,9 @@
             <div id="homeFeed"></div>
           </article>
 
-          <article class="dashboard-card">
-            <header><strong>UPCOMING EVENTS</strong><button data-nav="eventsView">View all</button></header>
-            <div class="event-summary">
-              <span class="date-box">JUN<br><b>26</b></span>
-              <div><strong>50th Reunion Memories</strong><small>St. Martinville, LA</small></div>
-            </div>
-            <div class="event-summary">
-              <span class="date-box">NEXT</span>
-              <div><strong>Plan a Get-Together</strong><small>Suggest one in the feed</small></div>
-            </div>
-          </article>
-
-          <article class="dashboard-card birthdays-card">
-            <header><strong>BIRTHDAYS THIS MONTH</strong><button data-nav="birthdaysView">View all</button></header>
-            <div id="birthdayStrip" class="birthday-strip"></div>
-          </article>
-
           <article class="quote-card">
-            <blockquote>“We may be fifty years older, but the memories are still as young as we are.”</blockquote>
+            <p class="quote-mark">“</p>
+            <blockquote>The memories never graduated.</blockquote>
             <small>— Class of 1976</small>
           </article>
         </section>
@@ -130,15 +112,19 @@
 
       <section id="peopleView" class="view">
         <div class="page-heading">
-          <div><p class="eyebrow purple">THEN & NOW</p><h1>Living Yearbook</h1></div>
+          <div>
+            <p class="eyebrow purple">THE LIVING YEARBOOK</p>
+            <h1>Where Are They Now?</h1>
+            <p class="page-intro">Reconnect through the stories, memories, and life journeys of the Class of 1976.</p>
+          </div>
           <button data-open="profileModal" class="round-button">＋</button>
         </div>
 
         <div class="directory-controls">
-          <label class="directory-search"><span>⌕</span><input id="directorySearch" type="search" placeholder="Search name, city, state, career"></label>
+          <label class="directory-search"><span>⌕</span><input id="directorySearch" type="search" placeholder="Search by name, city, state, or career"></label>
           <div class="view-buttons">
             <button id="listViewBtn" class="active">☷ List</button>
-            <button id="gridViewBtn">▦ Grid</button>
+            <button id="gridViewBtn">▦ Cards</button>
           </div>
         </div>
 
@@ -150,7 +136,7 @@
 
       <section id="feedView" class="view">
         <div class="page-heading">
-          <div><p class="eyebrow purple">COMMUNITY</p><h1>Class Feed</h1></div>
+          <div><p class="eyebrow purple">OUR COMMUNITY</p><h1>Class Feed</h1><p class="page-intro">A friendly place to say hello, share news, and keep the conversation going.</p></div>
           <button data-open="messageModal" class="round-button">＋</button>
         </div>
         <div id="messageFeed" class="feed-list"></div>
@@ -180,21 +166,6 @@
         <article class="info-panel"><strong>Suggest the Next Gathering</strong><p>Use the class feed to suggest lunches, calls, and future reunions.</p></article>
       </section>
 
-      <section id="birthdaysView" class="view">
-        <div class="page-heading"><div><p class="eyebrow purple">CELEBRATE</p><h1>Birthdays</h1></div></div>
-        <div id="birthdayList" class="birthday-list"></div>
-      </section>
-
-      <section id="mapView" class="view">
-        <div class="page-heading"><div><p class="eyebrow purple">WHERE WE ARE NOW</p><h1>Class Map</h1></div></div>
-        <div class="map-placeholder">
-          <span>📍</span>
-          <h2>Class Map</h2>
-          <p>Classmates’ cities will be organized here as the directory grows.</p>
-          <div id="cityList" class="city-list"></div>
-        </div>
-      </section>
-
       <section id="memorialView" class="view memorial-view">
         <div class="candle">🕯️</div>
         <p class="eyebrow gold">IN LOVING MEMORY</p>
@@ -216,24 +187,23 @@
 <div id="profileModal" class="modal">
   <div class="sheet">
     <button class="close" data-close>×</button>
+    <p class="eyebrow purple">YOUR YEARBOOK PAGE</p>
     <h2>Add My Story</h2>
     <p>Your information appears automatically after submission.</p>
     <form id="profileForm">
       <label>Full name<input name="name" required maxlength="70"></label>
       <div class="two-column"><label>City<input name="city"></label><label>State<input name="state"></label></div>
       <label>Birthday<input name="birthday" type="date"></label>
-      <label>Career / life chapter<input name="career" maxlength="100"></label>
-      <label>Senior photo URL<input name="thenPhoto" type="url"></label>
-      <label>Current photo URL<input name="nowPhoto" type="url"></label>
+      <label>Career / life chapter<input name="career" maxlength="100" placeholder="Retired teacher, business owner, proud grandparent..."></label>
+      <label>Favorite school memory<textarea name="favoriteMemory" maxlength="500" placeholder="What memory still makes you smile?"></textarea></label>
       <label>Email<input name="email" type="email"></label>
       <label>Phone<input name="phone"></label>
-      <label>My journey since graduation<textarea name="bio" maxlength="500"></textarea></label>
+      <label>My journey since graduation<textarea name="bio" maxlength="500" placeholder="Share a little about your family, work, interests, or life today."></textarea></label>
       <fieldset><legend>Show in directory</legend>
         <label class="check"><input type="checkbox" name="showEmail"> Email</label>
         <label class="check"><input type="checkbox" name="showPhone"> Phone</label>
-        <label class="check"><input type="checkbox" name="showBirthday"> Birthday</label>
       </fieldset>
-      <button class="primary-button" type="submit">Add Me to the Yearbook</button>
+      <button class="primary-button" type="submit">Add Me to the Living Yearbook</button>
     </form>
   </div>
 </div>
@@ -241,6 +211,7 @@
 <div id="messageModal" class="modal">
   <div class="sheet">
     <button class="close" data-close>×</button>
+    <p class="eyebrow purple">OUR COMMUNITY</p>
     <h2>Post a Message</h2>
     <form id="messageForm">
       <label>Your name<input name="author" required></label>
