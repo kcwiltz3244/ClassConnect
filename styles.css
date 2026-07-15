@@ -218,3 +218,14 @@ main{max-width:1300px;margin:auto;padding:0 24px 40px}.view{display:none}.view.a
 @media(max-width:900px){.legacy-names-v231{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.journey-invite-v231{grid-template-columns:auto 1fr}.journey-invite-v231 button{grid-column:1/-1}.journey-hero-v231{margin-left:-24px;margin-right:-24px}.journey-timeline-v231::before{left:24px}.journey-chapter-v231{grid-template-columns:50px 1fr;gap:12px}.journey-year-v231{padding:9px 3px;font-size:.65rem}.journey-card-v231{padding:24px 18px}.journey-card-v231 h2{font-size:1.5rem}.journey-icon-v231{opacity:.25}.memorial-view.legacy-view-v231{padding:0 16px 58px}.legacy-hero-v231{margin-left:-16px;margin-right:-16px}.legacy-message-v231{grid-template-columns:1fr}.legacy-message-v231>span{display:none}}
 @media(max-width:520px){.legacy-names-v231{grid-template-columns:1fr}.journey-invite-v231{grid-template-columns:1fr;text-align:center}.journey-invite-icon{margin:auto}}
+
+
+/* =========================================================
+   ClassConnect Version 2.4 — Shield & Sunrise Branding
+   ========================================================= */
+.brand-shield{display:block;object-fit:cover;padding:0!important;border-radius:24%;background:#2c043e}
+.crest-large.brand-shield{width:138px;height:138px;border:4px solid var(--gold);box-shadow:0 0 0 5px rgba(255,255,255,.92),0 18px 46px rgba(0,0,0,.30)}
+.sidebar-crest.brand-shield{width:64px;height:64px;border:2px solid var(--gold);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.top-shield{width:42px;height:42px;border-radius:12px;object-fit:cover;border:2px solid var(--gold);box-shadow:0 4px 12px rgba(33,0,47,.24)}
+.top-title{display:flex;align-items:center;justify-content:center;gap:10px}
+@media(max-width:760px){.top-title{justify-content:flex-start}.top-shield{width:36px;height:36px}}
