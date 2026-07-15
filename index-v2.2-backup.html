@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2c063e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ClassConnect">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>ClassConnect — Where Are They Now?</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section id="introScreen" class="intro-screen">
+  <div class="intro-content">
+    <div class="crest-large">76</div>
+    <p class="intro-kicker">ST. MARTINVILLE SENIOR HIGH SCHOOL</p>
+    <h1>ClassConnect</h1>
+    <h2>The Living Yearbook</h2>
+    <p>Fifty years later… our stories are still being written.</p>
+    <button id="enterAppBtn" class="gold-button">Enter ClassConnect</button>
+    <button id="skipIntroBtn" class="quiet-button">Skip</button>
+  </div>
+</section>
+
+<div id="appShell" class="app-shell hidden">
+  <aside class="sidebar">
+    <div class="school-brand">
+      <div class="sidebar-crest">76</div>
+      <div>
+        <strong>ST. MARTINVILLE</strong>
+        <small>SENIOR HIGH SCHOOL</small>
+        <em>CLASS OF 1976</em>
+      </div>
+    </div>
+
+    <nav class="side-nav">
+      <button class="active" data-nav="homeView"><span>🏠</span>Home</button>
+      <button data-nav="peopleView"><span>👥</span>Where Are They Now?</button>
+      <button data-nav="feedView"><span>💬</span>Community Feed</button>
+      <button data-nav="memoriesView"><span>📸</span>Memories</button>
+      <button data-nav="storyView"><span>📖</span>Our Story</button>
+      <button data-nav="eventsView"><span>📅</span>Events</button>
+      <button data-nav="memorialView"><span>🕊️</span>In Memory</button>
+    </nav>
+
+    <div class="sidebar-note">
+      <p>THE LIVING YEARBOOK</p>
+      <strong>Our stories did not end in 1976.</strong>
+      <button id="showWelcomeBtn" class="sidebar-link">Show welcome screen</button>
+    </div>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar">
+      <button id="menuBtn" class="menu-button">☰</button>
+      <div class="top-title">The Living Yearbook</div>
+      <label class="top-search">
+        <input id="globalSearch" type="search" placeholder="Find a classmate...">
+        <span>⌕</span>
+      </label>
+      <button id="installBtn" class="install-button" hidden>Install</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <section class="hero hero-v23">
+          <div class="hero-copy">
+            <p id="greeting" class="eyebrow gold">WELCOME HOME</p>
+            <p class="hero-school">St. Martinville Senior High School</p>
+            <h1>Class of 1976</h1>
+            <h2>50 Years Later… Our Story Continues</h2>
+            <p>Every classmate has a story worth preserving—and every story helps keep our class connected.</p>
+            <div class="hero-actions">
+              <button data-open="profileModal" class="gold-button">✎ Add My Story</button>
+              <button data-nav="feedView" class="outline-button">💬 Community Feed</button>
+            </div>
+          </div>
+          <div class="hero-stats hero-stats-v23">
+            <article><span>👥</span><strong id="classmateCount">0</strong><small>Classmates Connected</small></article>
+            <article><span>💬</span><strong id="messageCount">0</strong><small>Class Messages</small></article>
+            <article><span>🎂</span><strong id="birthdayCount">0</strong><small>Birthdays This Month</small></article>
+          </div>
+        </section>
+        <section class="home-feature-grid">
+          <article class="spotlight-card">
+            <div class="section-label">🌟 CLASSMATE SPOTLIGHT</div>
+            <div id="classmateSpotlight" class="spotlight-content"><p class="loading-copy">Choosing today’s spotlight…</p></div>
+          </article>
+          <article class="birthday-spotlight-card">
+            <div class="section-label">🎂 BIRTHDAY SPOTLIGHT</div>
+            <div id="birthdaySpotlight" class="birthday-spotlight-content"><p class="loading-copy">Checking this month’s birthdays…</p></div>
+          </article>
+        </section>
+        <section class="quick-access quick-access-v23">
+          <button data-nav="peopleView"><span>👥</span><div><strong>Where Are They Now?</strong><small>Stories from classmates</small></div></button>
+          <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Greetings and updates</small></div></button>
+          <button data-nav="memoriesView"><span>📸</span><div><strong>Memories Gallery</strong><small>Photos through the years</small></div></button>
+          <button data-nav="storyView"><span>📖</span><div><strong>Our Story</strong><small>1976 to today</small></div></button>
+          <button data-nav="eventsView"><span>📅</span><div><strong>Events</strong><small>What’s coming up</small></div></button>
+          <button data-nav="memorialView"><span>🕊️</span><div><strong>In Memory</strong><small>Forever remembered</small></div></button>
+        </section>
+        <section class="dashboard-grid dashboard-grid-v23">
+          <article class="dashboard-card"><header><strong>WHO’S NEW</strong><button data-nav="peopleView">View all</button></header><div id="newClassmates"></div></article>
+          <article class="dashboard-card wide"><header><strong>RECENT CLASS FEED</strong><button data-nav="feedView">View all</button></header><div id="homeFeed"></div></article>
+          <article class="quote-card"><p class="quote-mark">“</p><blockquote id="homeQuote">The memories never graduated.</blockquote><small>— Class of 1976</small></article>
+        </section>
+      </section>
+
+      <section id="peopleView" class="view">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow purple">THE LIVING YEARBOOK</p>
+            <h1>Where Are They Now?</h1>
+            <p class="page-intro">Reconnect through the stories, memories, and life journeys of the Class of 1976.</p>
+          </div>
+          <button data-open="profileModal" class="round-button">＋</button>
+        </div>
+
+        <div class="directory-controls">
+          <label class="directory-search"><span>⌕</span><input id="directorySearch" type="search" placeholder="Search by name, city, state, or career"></label>
+          <div class="view-buttons">
+            <button id="listViewBtn" class="active">☷ List</button>
+            <button id="gridViewBtn">▦ Cards</button>
+          </div>
+        </div>
+
+        <div class="privacy-note">🔒 Contact information appears only when classmates choose to share it.</div>
+        <div id="directoryGrid" class="directory list-mode"></div>
+        <p id="directoryEmpty" class="empty-state" hidden>No classmates match your search.</p>
+        <div id="pagination" class="pagination"></div>
+      </section>
+
+      <section id="feedView" class="view">
+        <div class="page-heading">
+          <div><p class="eyebrow purple">OUR COMMUNITY</p><h1>Class Feed</h1><p class="page-intro">A friendly place to say hello, share news, and keep the conversation going.</p></div>
+          <button data-open="messageModal" class="round-button">＋</button>
+        </div>
+        <div id="messageFeed" class="feed-list"></div>
+      </section>
+
+      <section id="memoriesView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">THEN & NOW</p><h1>Memories</h1></div></div>
+        <a class="feature-panel" href="https://qrowdpics.com/smsh50reunion" target="_blank" rel="noopener">
+          <span>📸</span><div><strong>50th Reunion Gallery</strong><small>View and share reunion photos</small></div><b>›</b>
+        </a>
+      </section>
+
+      <section id="storyView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">FIVE DECADES</p><h1>Our Story</h1></div></div>
+        <div class="timeline">
+          <article><b>1972</b><div><strong>Freshman Year</strong><p>A new chapter began.</p></div></article>
+          <article><b>1976</b><div><strong>Graduation</strong><p>We stepped into the world.</p></div></article>
+          <article><b>1986</b><div><strong>10-Year Reunion</strong><p>Old friends, new stories.</p></div></article>
+          <article><b>2026</b><div><strong>50-Year Reunion</strong><p>We came home again.</p></div></article>
+          <article><b>Today</b><div><strong>ClassConnect</strong><p>Our story continues.</p></div></article>
+        </div>
+      </section>
+
+      <section id="eventsView" class="view">
+        <div class="page-heading"><div><p class="eyebrow purple">WHAT’S NEXT</p><h1>Events</h1></div></div>
+        <article class="info-panel"><strong>50th Reunion Memories</strong><p>Relive the milestone weekend through the class gallery.</p></article>
+        <article class="info-panel"><strong>Suggest the Next Gathering</strong><p>Use the class feed to suggest lunches, calls, and future reunions.</p></article>
+      </section>
+
+      <section id="memorialView" class="view memorial-view">
+        <div class="memorial-inner">
+          <div class="memorial-hero">
+            <div class="candle-wrap"><div class="candle-glow"></div><div class="candle">🕯️</div></div>
+            <p class="eyebrow gold">IN LOVING MEMORY</p>
+            <h1>Forever Part of Our Class</h1>
+            <p class="memorial-message">They may be gone from our sight, but they remain forever in our memories, in our friendships, and in the continuing story of the Class of 1976.</p>
+          </div>
+          <div class="memorial-divider"><span></span><b>🕊️</b><span></span></div>
+          <div class="memorial-names memorial-cards">
+            <article class="memorial-name"><span>🕊️</span><div><strong>Annette Pierre</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Atheline Cormier</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>B. McGraw Charles</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Brenda Sias</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Chris Faulk</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Chris Robertson</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Darrell Narcisse</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Debra Batiste</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Edward Raymond</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Ernest Joseph</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Evelyn Drake</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Gary Charles</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Gary Guidry</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Glenn Perrodin</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Horace Cole</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Jody Anthony</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Jules Charles</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Kenneth Lastrappe</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Larry Broussard</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Lee Williams</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Linda Batiste</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Linda Bonhomme</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Linda George</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Lois Gulliam</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Manuel Mallery</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Mark Mitchell</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Mary Alice Sam</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Mary Joyce Leon</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Nolan Charles Jr.</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Perry Pierre</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Phyllis Williams</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Ray Marshall</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Richard Marshall</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Rickey Batiste</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Roland Allen</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Samuel Savoy</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Sharon Wiltz Abraham</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Sherman Hypolite</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Stella Orphe</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Terry Benjamin</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Tyrone Bowles</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Vernon Abbott</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Walter Lanky Stewart</strong><small>Class of 1976</small></div></article>
+            <article class="memorial-name"><span>🕊️</span><div><strong>Wanda James Minor</strong><small>Class of 1976</small></div></article>
+          </div>
+          <div class="memorial-closing"><p>Gone from our sight, never from our story.</p><small>St. Martinville Senior High School • Class of 1976</small></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="active" data-nav="homeView"><span>🏠</span><small>Home</small></button>
+      <button data-nav="peopleView"><span>👥</span><small>People</small></button>
+      <button data-nav="feedView"><span>💬</span><small>Feed</small></button>
+      <button data-nav="storyView"><span>📖</span><small>Story</small></button>
+      <button data-nav="eventsView"><span>📅</span><small>Events</small></button>
+    </nav>
+  </div>
+</div>
+
+<div id="profileModal" class="modal">
+  <div class="sheet">
+    <button class="close" data-close>×</button>
+    <p class="eyebrow purple">YOUR YEARBOOK PAGE</p>
+    <h2>Add My Story</h2>
+    <p>Your information appears automatically after submission.</p>
+    <form id="profileForm">
+      <label>Profile photo<input id="profilePhotoInput" name="profilePhoto" type="file" accept="image/*"><small class="field-help">Choose one photo from your phone or computer. It will be resized automatically.</small></label>
+      <div id="photoPreview" class="photo-preview hidden"></div>
+      <label>Full name<input name="name" required maxlength="70"></label>
+      <div class="two-column"><label>City<input name="city"></label><label>State<input name="state"></label></div>
+      <label>Birthday<input name="birthday" type="date"></label>
+      <label>Career / life chapter<input name="career" maxlength="100" placeholder="Retired teacher, business owner, proud grandparent..."></label>
+      <label>Favorite school memory<textarea name="favoriteMemory" maxlength="500" placeholder="What memory still makes you smile?"></textarea></label>
+      <label>Email<input name="email" type="email"></label>
+      <label>Phone<input name="phone"></label>
+      <label>My journey since graduation<textarea name="bio" maxlength="500" placeholder="Share a little about your family, work, interests, or life today."></textarea></label>
+      <fieldset><legend>Show in directory</legend>
+        <label class="check"><input type="checkbox" name="showEmail"> Email</label>
+        <label class="check"><input type="checkbox" name="showPhone"> Phone</label>
+      </fieldset>
+      <button id="profileSubmitBtn" class="primary-button" type="submit">Add Me to the Living Yearbook</button>
+    </form>
+  </div>
+</div>
+
+<div id="messageModal" class="modal">
+  <div class="sheet">
+    <button class="close" data-close>×</button>
+    <p class="eyebrow purple">OUR COMMUNITY</p>
+    <h2>Post a Message</h2>
+    <form id="messageForm">
+      <label>Your name<input name="author" required></label>
+      <label>Message<textarea name="text" required maxlength="500"></textarea></label>
+      <button class="primary-button" type="submit">Post Message</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
