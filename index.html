@@ -65,25 +65,35 @@
 
     <main>
       <section id="homeView" class="view active">
-        <section class="hero">
+        <section class="hero hero-v23">
           <div class="hero-copy">
-            <p id="greeting" class="eyebrow gold">WELCOME BACK</p>
+            <p id="greeting" class="eyebrow gold">WELCOME HOME</p>
+            <p class="hero-school">St. Martinville Senior High School</p>
             <h1>Class of 1976</h1>
-            <p>Every classmate has a story worth preserving.</p>
+            <h2>50 Years Later… Our Story Continues</h2>
+            <p>Every classmate has a story worth preserving—and every story helps keep our class connected.</p>
             <div class="hero-actions">
               <button data-open="profileModal" class="gold-button">✎ Add My Story</button>
-              <button data-open="messageModal" class="outline-button">💬 Post a Message</button>
+              <button data-nav="feedView" class="outline-button">💬 Community Feed</button>
             </div>
           </div>
-
-          <div class="hero-stats">
-            <article><span>👥</span><strong id="classmateCount">0</strong><small>Classmates</small></article>
-            <article><span>💬</span><strong id="messageCount">0</strong><small>Messages</small></article>
+          <div class="hero-stats hero-stats-v23">
+            <article><span>👥</span><strong id="classmateCount">0</strong><small>Classmates Connected</small></article>
+            <article><span>💬</span><strong id="messageCount">0</strong><small>Class Messages</small></article>
             <article><span>🎂</span><strong id="birthdayCount">0</strong><small>Birthdays This Month</small></article>
           </div>
         </section>
-
-        <section class="quick-access">
+        <section class="home-feature-grid">
+          <article class="spotlight-card">
+            <div class="section-label">🌟 CLASSMATE SPOTLIGHT</div>
+            <div id="classmateSpotlight" class="spotlight-content"><p class="loading-copy">Choosing today’s spotlight…</p></div>
+          </article>
+          <article class="birthday-spotlight-card">
+            <div class="section-label">🎂 BIRTHDAY SPOTLIGHT</div>
+            <div id="birthdaySpotlight" class="birthday-spotlight-content"><p class="loading-copy">Checking this month’s birthdays…</p></div>
+          </article>
+        </section>
+        <section class="quick-access quick-access-v23">
           <button data-nav="peopleView"><span>👥</span><div><strong>Where Are They Now?</strong><small>Stories from classmates</small></div></button>
           <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Greetings and updates</small></div></button>
           <button data-nav="memoriesView"><span>📸</span><div><strong>Memories Gallery</strong><small>Photos through the years</small></div></button>
@@ -91,23 +101,10 @@
           <button data-nav="eventsView"><span>📅</span><div><strong>Events</strong><small>What’s coming up</small></div></button>
           <button data-nav="memorialView"><span>🕊️</span><div><strong>In Memory</strong><small>Forever remembered</small></div></button>
         </section>
-
-        <section class="dashboard-grid">
-          <article class="dashboard-card">
-            <header><strong>WHO’S NEW</strong><button data-nav="peopleView">View all</button></header>
-            <div id="newClassmates"></div>
-          </article>
-
-          <article class="dashboard-card wide">
-            <header><strong>RECENT CLASS FEED</strong><button data-nav="feedView">View all</button></header>
-            <div id="homeFeed"></div>
-          </article>
-
-          <article class="quote-card">
-            <p class="quote-mark">“</p>
-            <blockquote>The memories never graduated.</blockquote>
-            <small>— Class of 1976</small>
-          </article>
+        <section class="dashboard-grid dashboard-grid-v23">
+          <article class="dashboard-card"><header><strong>WHO’S NEW</strong><button data-nav="peopleView">View all</button></header><div id="newClassmates"></div></article>
+          <article class="dashboard-card wide"><header><strong>RECENT CLASS FEED</strong><button data-nav="feedView">View all</button></header><div id="homeFeed"></div></article>
+          <article class="quote-card"><p class="quote-mark">“</p><blockquote id="homeQuote">The memories never graduated.</blockquote><small>— Class of 1976</small></article>
         </section>
       </section>
 
