@@ -23,12 +23,84 @@ main{max-width:1300px;margin:auto;padding:0 24px 40px}.view{display:none}.view.a
 .memorial-names{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;text-align:left}.memorial-name{display:flex;align-items:center;gap:10px;min-width:0;min-height:58px;padding:12px 14px;border:1px solid rgba(244,197,66,.18);border-radius:12px;background:rgba(255,255,255,.06);box-shadow:0 8px 18px rgba(0,0,0,.12)}.memorial-name span{flex:0 0 auto;font-size:1.1rem}.memorial-name strong{min-width:0;color:#fff;font-family:Georgia,serif;font-size:.98rem;line-height:1.3;overflow-wrap:anywhere}.memorial-closing{margin-top:38px;padding-top:26px;border-top:1px solid rgba(244,197,66,.2)}.memorial-closing p{margin:0 0 8px;color:var(--gold);font-family:Georgia,serif;font-size:1.7rem;font-style:italic}.memorial-closing small{color:#cfc3d4}
 @media(max-width:850px){.memorial-names{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.memorial-view{padding:42px 16px 58px}.memorial-names{grid-template-columns:1fr}.memorial-name{min-height:52px}}
 
-/* ===== Version 2.3 Sprint 1: Welcome Home ===== */
-.hero-v23{min-height:340px;padding-top:46px;padding-bottom:46px}.hero-v23::after{content:"76";position:absolute;right:31%;bottom:-38px;color:rgba(255,255,255,.045);font-family:Georgia,serif;font-size:15rem;font-weight:900;pointer-events:none}.hero-school{margin:0 0 5px;color:#f4e7ff;font-family:Georgia,serif;font-size:1.08rem;letter-spacing:.04em}.hero-v23 .hero-copy{position:relative;z-index:1;max-width:720px}.hero-v23 .hero-copy h1{margin-bottom:7px}.hero-v23 .hero-copy h2{margin:0 0 14px;color:var(--gold);font-family:Georgia,serif;font-size:clamp(1.35rem,3vw,2.15rem);font-weight:500}.hero-v23 .hero-copy>p:last-of-type{max-width:650px;color:#eee3f3;font-size:1.04rem;line-height:1.55}.hero-stats-v23{width:280px;position:relative;z-index:1;border-color:rgba(244,197,66,.35);box-shadow:0 18px 38px rgba(0,0,0,.24)}.hero-stats-v23 small{font-size:.75rem}
-.home-feature-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr);gap:16px;margin:20px 0 16px}.spotlight-card,.birthday-spotlight-card{overflow:hidden;border:1px solid rgba(75,8,119,.08);border-radius:18px;background:#fff;box-shadow:var(--shadow)}.section-label{padding:12px 18px;color:var(--gold);background:linear-gradient(90deg,#3d0758,#702895);font-size:.76rem;font-weight:900;letter-spacing:.12em}.spotlight-content,.birthday-spotlight-content{min-height:218px;padding:20px}.spotlight-profile{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}.spotlight-avatar{width:150px;height:170px;display:grid;place-items:center;overflow:hidden;border:4px solid var(--gold);border-radius:18px;color:#fff;background:linear-gradient(145deg,#7d2ba3,#3a0750);box-shadow:0 12px 25px rgba(51,8,76,.19);font-size:2.8rem;font-weight:900}.spotlight-avatar img{width:100%;height:100%;object-fit:cover}.spotlight-details h3{margin:0 0 7px;color:var(--purple);font-family:Georgia,serif;font-size:clamp(1.7rem,3vw,2.35rem)}.spotlight-location,.spotlight-career{margin:5px 0;color:var(--muted)}.spotlight-details blockquote{margin:15px 0;padding:13px 16px;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;color:#5b3a00;background:var(--cream);font-family:Georgia,serif;font-style:italic;line-height:1.5}.spotlight-bio{line-height:1.55}.spotlight-link{border:0;border-radius:999px;padding:9px 14px;color:#fff;background:var(--purple);font-weight:800;cursor:pointer}
-.birthday-heading{display:flex;flex-direction:column;gap:5px;padding-bottom:13px;border-bottom:1px solid var(--line)}.birthday-month{color:var(--purple);font-size:.74rem;font-weight:900;letter-spacing:.13em}.birthday-heading strong{color:#8a5d00;font-family:Georgia,serif;font-size:1.55rem}.birthday-list{display:grid;gap:4px;margin-top:10px}.birthday-row{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px solid var(--line)}.birthday-row:last-child{border-bottom:0}.birthday-avatar{width:42px;height:42px;min-width:42px;display:grid;place-items:center;overflow:hidden;border:2px solid var(--gold);border-radius:50%;color:#fff;background:linear-gradient(145deg,#7d2ba3,#3a0750);font-size:.8rem;font-weight:900}.birthday-avatar img{width:100%;height:100%;object-fit:cover}.birthday-row strong,.birthday-row small{display:block}.birthday-row strong{color:var(--purple)}.birthday-row small{margin-top:2px;color:var(--muted)}.birthday-empty{display:grid;min-height:175px;place-items:center;align-content:center;text-align:center}.birthday-empty span{font-size:2.5rem}.birthday-empty h3{margin:8px 0 4px;color:var(--purple);font-family:Georgia,serif}.birthday-empty p,.empty-feature-copy,.loading-copy{color:var(--muted);line-height:1.45}.quick-access-v23{margin-top:0}.dashboard-grid-v23{margin-top:4px}
-@media(max-width:900px){.home-feature-grid{grid-template-columns:1fr}.birthday-spotlight-content{min-height:auto}}@media(max-width:760px){.hero-v23{min-height:auto}.hero-v23::after{right:-16px;bottom:10px;font-size:9rem}.spotlight-profile{grid-template-columns:105px 1fr;gap:15px}.spotlight-avatar{width:105px;height:125px;font-size:2rem}}@media(max-width:520px){.home-feature-grid{margin-top:14px}.spotlight-content,.birthday-spotlight-content{padding:16px}.spotlight-profile{grid-template-columns:1fr;text-align:center}.spotlight-avatar{width:125px;height:145px;margin:auto}.spotlight-details blockquote{text-align:left}}
+/* ===== Memorial Color Refresh ===== */
+.memorial-view{
+  color:#fffdf7;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,225,132,.38),transparent 24%),
+    radial-gradient(circle at 14% 28%,rgba(190,133,255,.28),transparent 30%),
+    radial-gradient(circle at 86% 58%,rgba(244,197,66,.18),transparent 26%),
+    linear-gradient(145deg,#5b1882 0%,#40105e 45%,#281039 100%);
+}
+.memorial-hero{
+  max-width:790px;
+  margin:0 auto;
+  padding:26px 24px 10px;
+  border-radius:26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.025));
+  box-shadow:0 18px 50px rgba(27,0,38,.24);
+  text-align:center;
+}
+.candle-glow{
+  background:radial-gradient(circle,rgba(255,232,151,.72),rgba(244,197,66,.24) 48%,transparent 73%);
+}
+.memorial-view .candle{
+  filter:drop-shadow(0 0 22px rgba(255,226,125,.72));
+}
+.memorial-view h1{
+  color:#ffe88f;
+  text-shadow:0 3px 18px rgba(33,0,47,.28);
+}
+.memorial-message{color:#fffaf0}
+.memorial-divider span{
+  height:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,225,132,.95),transparent);
+}
+.memorial-name{
+  min-height:90px;
+  border-color:rgba(255,224,132,.52);
+  background:
+    linear-gradient(135deg,rgba(255,248,255,.22),rgba(220,190,255,.10)),
+    linear-gradient(180deg,rgba(118,50,153,.32),rgba(69,23,94,.20));
+  box-shadow:0 12px 28px rgba(32,0,45,.20);
+}
+.memorial-name:nth-child(3n+2){
+  background:
+    linear-gradient(135deg,rgba(255,248,230,.20),rgba(255,216,120,.08)),
+    linear-gradient(180deg,rgba(118,50,153,.30),rgba(69,23,94,.18));
+}
+.memorial-name:nth-child(3n){
+  background:
+    linear-gradient(135deg,rgba(239,225,255,.24),rgba(190,133,255,.10)),
+    linear-gradient(180deg,rgba(118,50,153,.30),rgba(69,23,94,.18));
+}
+.memorial-name::after{color:rgba(255,232,143,.10)}
+.memorial-name:hover{
+  border-color:#ffe88f;
+  box-shadow:0 18px 34px rgba(32,0,45,.30),0 0 0 1px rgba(255,232,143,.18);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.28),rgba(231,205,255,.15)),
+    linear-gradient(180deg,rgba(126,55,164,.40),rgba(72,24,98,.24));
+}
+.memorial-name>span{
+  border-color:rgba(255,232,143,.72);
+  background:linear-gradient(145deg,rgba(255,235,162,.30),rgba(255,255,255,.12));
+}
+.memorial-name strong{color:#fffef9}
+.memorial-name small{color:#ffe7a0}
+.memorial-closing{
+  max-width:780px;
+  padding:30px 24px;
+  border:1px solid rgba(255,226,139,.30);
+  border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+  box-shadow:0 15px 40px rgba(32,0,45,.18);
+}
+.memorial-closing p{color:#ffe88f}
+.memorial-closing small{color:#fff4dc}
 
-/* ===== Memorial Visual Redesign ===== */
-.memorial-view{min-height:calc(100vh - 72px);padding:58px 28px 80px;color:#fff;background:radial-gradient(circle at 50% 4%,rgba(244,197,66,.18),transparent 22%),radial-gradient(circle at 18% 35%,rgba(107,35,141,.18),transparent 28%),linear-gradient(180deg,#1b1420 0%,#0c0a0e 58%,#070608 100%)}
-.memorial-inner{width:100%;max-width:1160px;margin:0 auto}.memorial-hero{max-width:760px;margin:0 auto;text-align:center}.candle-wrap{position:relative;width:92px;height:92px;margin:0 auto 12px;display:grid;place-items:center}.candle-glow{position:absolute;inset:6px;border-radius:50%;background:radial-gradient(circle,rgba(244,197,66,.42),rgba(244,197,66,.10) 45%,transparent 72%);filter:blur(2px);animation:candlePulse 3.2s ease-in-out infinite}.memorial-view .candle{position:relative;z-index:1;font-size:4.7rem;filter:drop-shadow(0 0 18px rgba(244,197,66,.45))}.memorial-view h1{margin:8px 0 14px;color:var(--gold);font-family:Georgia,serif;font-size:clamp(2.7rem,6vw,4.9rem);line-height:1.05}.memorial-message{max-width:730px;margin:0 auto;color:#e5dbe8;font-family:Georgia,serif;font-size:1.08rem;line-height:1.75}.memorial-divider{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;max-width:760px;margin:34px auto}.memorial-divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,197,66,.8),transparent)}.memorial-divider b{font-size:1.55rem}.memorial-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;text-align:left}.memorial-name{position:relative;display:flex;align-items:center;gap:13px;min-width:0;min-height:88px;padding:17px 18px;overflow:hidden;border:1px solid rgba(244,197,66,.20);border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:0 12px 26px rgba(0,0,0,.20);transition:transform .2s ease,border-color .2s ease,background .2s ease}.memorial-name::after{content:"76";position:absolute;right:10px;bottom:-14px;color:rgba(244,197,66,.055);font-family:Georgia,serif;font-size:3.7rem;font-weight:900}.memorial-name:hover{transform:translateY(-3px);border-color:rgba(244,197,66,.48);background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.04))}.memorial-name>span{position:relative;z-index:1;flex:0 0 auto;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(244,197,66,.30);border-radius:50%;background:rgba(244,197,66,.09);font-size:1.15rem}.memorial-name div{position:relative;z-index:1;min-width:0}.memorial-name strong{display:block;color:#fff;font-family:Georgia,serif;font-size:1.04rem;line-height:1.3}.memorial-name small{display:block;margin-top:4px;color:#cdbfd2;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}.memorial-closing{max-width:760px;margin:46px auto 0;padding-top:28px;border-top:1px solid rgba(244,197,66,.22);text-align:center}.memorial-closing p{margin:0 0 9px;color:var(--gold);font-family:Georgia,serif;font-size:1.9rem;font-style:italic}.memorial-closing small{color:#cfc3d4}@keyframes candlePulse{0%,100%{transform:scale(.96);opacity:.72}50%{transform:scale(1.08);opacity:1}}@media(max-width:900px){.memorial-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.memorial-view{padding:44px 16px 66px}.memorial-cards{grid-template-columns:1fr;gap:11px}.memorial-name{min-height:76px;padding:14px 15px}.memorial-view h1{font-size:clamp(2.4rem,12vw,3.7rem)}.memorial-message{font-size:1rem}.memorial-closing p{font-size:1.55rem}}
+@media(max-width:560px){
+  .memorial-hero{padding:22px 16px 8px}
+  .memorial-closing{padding:24px 16px}
+}
+
