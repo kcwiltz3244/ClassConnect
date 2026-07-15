@@ -1,17 +1,13 @@
 {
-  "name": "ClassConnect 2.1 \u2014 Living Yearbook",
+  "name": "ClassConnect — The Living Yearbook",
   "short_name": "ClassConnect",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#21002f",
+  "background_color": "#2c063e",
   "theme_color": "#4b0877",
-  "description": "The living yearbook for the St. Martinville Senior High School Class of 1976.",
+  "description": "The Living Yearbook for the St. Martinville Senior High School Class of 1976.",
   "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }
