@@ -20,6 +20,7 @@
     <h2>The Living Yearbook</h2><p class="intro-tagline">Our class. Our stories. Our connection.</p>
     <p>Fifty years later… our stories are still being written.</p>
     <button id="enterAppBtn" class="gold-button">Enter ClassConnect</button>
+    <button id="skipIntroBtn" class="quiet-button">Skip</button>
   </div>
 </section>
 
@@ -72,7 +73,7 @@
             <h2>50 Years Later… Our Journey Continues</h2>
             <p>Every classmate has a story worth preserving—and every story helps keep our class connected.</p>
             <div class="hero-actions">
-              <button data-open="profileModal" class="gold-button">✎ Add or Edit My Story</button>
+              <button data-open="profileModal" class="gold-button">✎ Add My Story</button>
               <button data-nav="feedView" class="outline-button">💬 Community Feed</button>
             </div>
           </div>
@@ -366,23 +367,9 @@
   <div class="sheet">
     <button class="close" data-close>×</button>
     <p class="eyebrow purple">YOUR YEARBOOK PAGE</p>
-    <h2>Add or Edit My Story</h2>
+    <h2>Add My Story</h2>
     <p>Your information appears automatically after submission.</p>
-    
-    <div class="story-mode-v251">
-      <p class="story-mode-copy-v251">Already have a story? Find it first so you can update it without creating a duplicate.</p>
-      <div class="story-lookup-v251">
-        <input id="editLookupName" type="text" placeholder="Your full name">
-        <input id="editLookupEmail" type="email" placeholder="Your email">
-        <button id="findStoryBtn" type="button">Find My Story</button>
-      </div>
-      <div id="storyLookupStatus" class="story-lookup-status-v251"></div>
-      <button id="startNewStoryBtn" type="button" class="story-new-button-v251">Start a New Story Instead</button>
-    </div>
-
     <form id="profileForm">
-      <input type="hidden" name="recordId" id="profileRecordId">
-      <input type="hidden" name="formMode" id="profileFormMode" value="add">
       <label>Profile photo<input id="profilePhotoInput" name="profilePhoto" type="file" accept="image/*"><small class="field-help">Choose one photo from your phone or computer. It will be resized automatically.</small></label>
       <div id="photoPreview" class="photo-preview hidden"></div>
       <label>Full name<input name="name" required maxlength="70"></label>
@@ -397,7 +384,7 @@
         <label class="check"><input type="checkbox" name="showEmail"> Email</label>
         <label class="check"><input type="checkbox" name="showPhone"> Phone</label>
       </fieldset>
-      <button id="profileSubmitBtn" class="primary-button" type="submit">Save My Story</button>
+      <button id="profileSubmitBtn" class="primary-button" type="submit">Add Me to the Living Yearbook</button>
     </form>
   </div>
 </div>
@@ -480,7 +467,7 @@
 </div>
 
 <div id="toast" class="toast"></div>
-<script src="config.js?v=251-datafix"></script>
-<script src="app.js?v=251-datafix"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

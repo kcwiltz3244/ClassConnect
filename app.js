@@ -140,7 +140,7 @@ async function loadData(){
 }
 
 $("#enterAppBtn").onclick=()=>enterApp(0);
-const skipIntroBtn=$("#skipIntroBtn"); if(skipIntroBtn)skipIntroBtn.onclick=()=>enterApp(24);
+$("#skipIntroBtn").onclick=()=>enterApp(24);
 $("#showWelcomeBtn").onclick=showWelcome;
 if(Number(localStorage.getItem(WELCOME_SKIP_KEY)||0)>Date.now())enterApp(0);
 
@@ -185,10 +185,26 @@ $("#profileForm").onsubmit=async e=>{
   e.preventDefault();
   if(!API_READY)return toast("Connect Apps Script first.");
   const f=new FormData(e.target);
-  const payload={id:f.get("recordId"),name:f.get("name").trim(),city:f.get("city").trim(),state:f.get("state").trim(),birthday:f.get("birthday"),career:f.get("career").trim(),favoriteMemory:f.get("favoriteMemory").trim(),email:f.get("email").trim(),phone:f.get("phone").trim(),bio:f.get("bio").trim(),showEmail:f.get("showEmail")==="on",showPhone:f.get("showPhone")==="on",profilePhotoData};
-  const mode=f.get("formMode")==="edit"?"edit":"add";
-  await postData(mode==="edit"?"updateClassmate":"addClassmate",payload);
-  e.target.reset(); $("#profileRecordId").value=""; $("#profileFormMode").value="add"; profilePhotoData=""; $("#photoPreview").classList.add("hidden"); e.target.closest(".modal").classList.remove("open"); toast(mode==="edit"?"Your story was updated.":"Your story was added."); setTimeout(loadData,1200);
+  await postData("addClassmate",{
+    name:f.get("name").trim(),
+    city:f.get("city").trim(),
+    state:f.get("state").trim(),
+    birthday:f.get("birthday"),
+    career:f.get("career").trim(),
+    favoriteMemory:f.get("favoriteMemory").trim(),
+    email:f.get("email").trim(),
+    phone:f.get("phone").trim(),
+    bio:f.get("bio").trim(),
+    showEmail:f.get("showEmail")==="on",
+    showPhone:f.get("showPhone")==="on",
+    profilePhotoData
+  });
+  e.target.reset();
+  profilePhotoData="";
+  $("#photoPreview").classList.add("hidden");
+  e.target.closest(".modal").classList.remove("open");
+  toast("Your story was added.");
+  setTimeout(loadData,1200);
 };
 
 $("#messageForm").onsubmit=async e=>{
@@ -325,9 +341,3 @@ if(eventForm)eventForm.onsubmit=async event=>{
   }
 };
 loadEvents();
-
-function jsonpWithParams(action,params={}){return new Promise((resolve,reject)=>{const cb="ccp_"+Date.now()+"_"+Math.floor(Math.random()*9999),s=document.createElement("script"),timer=setTimeout(()=>{cleanup();reject(new Error("Timeout"))},12000);function cleanup(){clearTimeout(timer);delete window[cb];s.remove()}window[cb]=d=>{cleanup();resolve(d)};s.onerror=()=>{cleanup();reject(new Error("Load failed"))};s.src=API_URL+"?"+new URLSearchParams({action,callback:cb,...params});document.body.appendChild(s)})}
-function setStoryLookupStatus(message,type=""){const el=$("#storyLookupStatus");if(!el)return;el.textContent=message;el.className="story-lookup-status-v251"+(type?` ${type}`:"")}
-function clearProfileFormForNew(){const form=$("#profileForm");form.reset();$("#profileRecordId").value="";$("#profileFormMode").value="add";profilePhotoData="";$("#photoPreview").classList.add("hidden");setStoryLookupStatus("Ready to add a new story.")}
-function fillProfileForm(r){const f=$("#profileForm"),set=(n,v="")=>{if(f.elements[n])f.elements[n].value=v??""};$("#profileRecordId").value=r.id||r.recordId||"";$("#profileFormMode").value="edit";set("name",r.name);set("city",r.city);set("state",r.state);set("birthday",r.birthday?String(r.birthday).slice(0,10):"");set("career",r.career);set("favoriteMemory",r.favoriteMemory);set("email",r.email);set("phone",r.phone);set("bio",r.bio);if(f.elements.showEmail)f.elements.showEmail.checked=String(r.showEmail).toLowerCase()==="true"||r.showEmail===true;if(f.elements.showPhone)f.elements.showPhone.checked=String(r.showPhone).toLowerCase()==="true"||r.showPhone===true;if(r.profilePhoto){profilePhotoData=r.profilePhoto;$("#photoPreview").innerHTML=`<img src="${esc(r.profilePhoto)}" alt="Profile preview">`;$("#photoPreview").classList.remove("hidden")}setStoryLookupStatus("Your story was found. Make your changes below, then tap Save My Story.","success");f.scrollIntoView({behavior:"smooth",block:"start"})}
-const findStoryBtn=$("#findStoryBtn");if(findStoryBtn)findStoryBtn.onclick=async()=>{const name=$("#editLookupName").value.trim(),email=$("#editLookupEmail").value.trim();if(!name||!email)return setStoryLookupStatus("Enter both your full name and email.","error");setStoryLookupStatus("Looking for your story…");try{const r=await jsonpWithParams("lookupClassmate",{name,email});r&&r.item?fillProfileForm(r.item):setStoryLookupStatus("No matching story was found. Check the spelling and email, or start a new story.","error")}catch(e){setStoryLookupStatus("Your story could not be found right now.","error")}};const startNewStoryBtn=$("#startNewStoryBtn");if(startNewStoryBtn)startNewStoryBtn.onclick=clearProfileFormForNew;
