@@ -273,3 +273,160 @@ html{scroll-behavior:smooth}
   .top-option4-logo{width:36px;height:36px}
   .sidebar-crest.option4-logo{width:62px;height:62px;flex-basis:62px}
 }
+
+
+/* =========================================================
+   ClassConnect Version 2.5 — Community Events
+   ========================================================= */
+.events-view-v25{padding-bottom:45px}
+.events-hero-v25{
+  margin:0 -24px 24px;
+  padding:46px 44px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 83% 22%,rgba(244,197,66,.30),transparent 22%),
+    linear-gradient(135deg,#4b0877,#6f2794 58%,#28785a);
+  border-bottom:4px solid var(--gold);
+}
+.events-hero-v25 h1{margin:.25rem 0;font:700 clamp(2.8rem,7vw,5rem) Georgia,serif}
+.events-hero-v25>div>p:last-child{max-width:680px;line-height:1.6}
+.event-submit-button-v25{
+  flex:0 0 auto;
+  min-height:50px;
+  padding:13px 20px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#ffe184,var(--gold));
+  color:var(--deep);
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.events-review-note-v25{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin:18px 0;
+  padding:13px 15px;
+  border-left:4px solid #28785a;
+  border-radius:12px;
+  background:#eaf7ef;
+  color:#245b47;
+}
+.events-review-note-v25 span{
+  width:28px;height:28px;display:grid;place-items:center;
+  border-radius:50%;background:#28785a;color:#fff;font-weight:900
+}
+.events-review-note-v25 p{margin:0}
+.events-section-heading-v25{display:flex;justify-content:space-between;align-items:end;margin:25px 0 14px}
+.events-section-heading-v25 h2{margin:.25rem 0;color:var(--purple);font:700 2rem Georgia,serif}
+.next-event-section-v25{
+  margin:24px 0;
+  padding:22px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#fff9df,#f5edfb);
+  border:1px solid #eadca8;
+  box-shadow:var(--shadow);
+}
+.next-event-card-v25{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:20px;
+}
+.next-event-date-v25{
+  width:92px;
+  padding:13px 8px;
+  border-radius:18px;
+  text-align:center;
+  background:var(--purple);
+  color:#fff;
+  box-shadow:var(--shadow-soft);
+}
+.next-event-date-v25 strong,.next-event-date-v25 small{display:block}
+.next-event-date-v25 strong{font:700 2.1rem Georgia,serif;color:var(--gold)}
+.next-event-date-v25 small{font-weight:900;letter-spacing:.08em}
+.next-event-copy-v25 h3{margin:.1rem 0;color:var(--purple);font:700 1.7rem Georgia,serif}
+.next-event-copy-v25 p{margin:.35rem 0;color:var(--muted);line-height:1.45}
+.event-countdown-v25{
+  min-width:100px;
+  padding:12px;
+  text-align:center;
+  border-radius:16px;
+  background:#fff;
+  color:var(--purple);
+  font-weight:900;
+  box-shadow:var(--shadow-soft);
+}
+.event-countdown-v25 strong{display:block;font:700 1.7rem Georgia,serif}
+.events-grid-v25{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.event-card-v25{
+  overflow:hidden;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(75,8,119,.08);
+}
+.event-card-header-v25{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  background:linear-gradient(135deg,#f5edfb,#fff8df);
+}
+.event-type-v25{
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--purple);
+  color:#fff;
+  font-size:.72rem;
+  font-weight:900;
+}
+.event-card-body-v25{padding:17px}
+.event-card-body-v25 h3{margin:.1rem 0 .7rem;color:var(--purple);font:700 1.35rem Georgia,serif}
+.event-card-body-v25 p{margin:.48rem 0;color:#5c5260;line-height:1.45}
+.event-card-body-v25 .event-description-v25{margin-top:12px;color:var(--muted)}
+.event-card-actions-v25{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.event-card-actions-v25 a{
+  padding:8px 11px;
+  border-radius:9px;
+  background:var(--paper);
+  color:var(--purple);
+  text-decoration:none;
+  font-weight:800;
+}
+.events-empty-v25{text-align:center;padding:26px;color:var(--muted);background:#fff;border-radius:14px}
+.past-events-v25{margin-top:30px}
+.past-events-v25 summary{
+  cursor:pointer;
+  padding:14px 16px;
+  border-radius:12px;
+  background:#eee8f1;
+  color:var(--purple);
+  font-weight:900;
+}
+.past-events-v25[open] summary{margin-bottom:14px}
+.event-sheet-v25 select{
+  width:100%;
+  padding:11px;
+  border:2px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+}
+.event-form-intro-v25{color:var(--muted);line-height:1.5}
+
+@media(max-width:900px){
+  .events-grid-v25{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .events-hero-v25{margin-left:-24px;margin-right:-24px;padding:34px 22px;display:block}
+  .event-submit-button-v25{width:100%;margin-top:18px}
+  .next-event-card-v25{grid-template-columns:auto 1fr}
+  .event-countdown-v25{grid-column:1/-1}
+}
+@media(max-width:520px){
+  .events-grid-v25{grid-template-columns:1fr}
+}

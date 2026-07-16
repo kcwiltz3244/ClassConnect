@@ -239,3 +239,105 @@ if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.
 renderDirectory();
 renderMessages();
 loadData();
+
+/* =========================================================
+   ClassConnect Version 2.5 — Community Events
+   ========================================================= */
+let classEvents=[];
+
+function eventDateObject(value){
+  if(!value)return null;
+  const d=new Date(value+"T12:00:00");
+  return Number.isNaN(d.getTime())?null:d;
+}
+function formatEventDate(value){
+  const d=eventDateObject(value);
+  return d?d.toLocaleDateString(undefined,{weekday:"short",month:"long",day:"numeric",year:"numeric"}):"Date not listed";
+}
+function formatEventTime(value){
+  if(!value)return "";
+  const [h,m]=value.split(":").map(Number);
+  const d=new Date();d.setHours(h||0,m||0,0,0);
+  return d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
+}
+function eventCard(e){
+  const links=[];
+  if(e.rsvpUrl)links.push(`<a href="${esc(e.rsvpUrl)}" target="_blank" rel="noopener">RSVP / Details</a>`);
+  if(e.location)links.push(`<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}" target="_blank" rel="noopener">Map</a>`);
+  return `<article class="event-card-v25">
+    <div class="event-card-header-v25">
+      <span class="event-type-v25">${esc(e.type||"Event")}</span>
+      <strong>${esc(formatEventDate(e.date))}</strong>
+    </div>
+    <div class="event-card-body-v25">
+      <h3>${esc(e.title)}</h3>
+      ${e.time?`<p>🕒 ${esc(formatEventTime(e.time))}</p>`:""}
+      ${e.location?`<p>📍 ${esc(e.location)}</p>`:""}
+      ${e.organizer?`<p>👤 ${esc(e.organizer)}</p>`:""}
+      <p class="event-description-v25">${esc(e.description||"")}</p>
+      ${e.contact?`<p>Contact: ${esc(e.contact)}</p>`:""}
+      ${links.length?`<div class="event-card-actions-v25">${links.join("")}</div>`:""}
+    </div>
+  </article>`;
+}
+function renderEvents(){
+  const today=new Date();today.setHours(0,0,0,0);
+  const approved=classEvents.filter(e=>String(e.status||"approved").toLowerCase()==="approved");
+  const upcoming=approved.filter(e=>{const d=eventDateObject(e.date);return d&&d>=today}).sort((a,b)=>eventDateObject(a.date)-eventDateObject(b.date));
+  const past=approved.filter(e=>{const d=eventDateObject(e.date);return d&&d<today}).sort((a,b)=>eventDateObject(b.date)-eventDateObject(a.date));
+
+  $("#upcomingEvents").innerHTML=upcoming.map(eventCard).join("");
+  $("#pastEvents").innerHTML=past.map(eventCard).join("");
+  $("#noUpcomingEvents").hidden=upcoming.length>0;
+  $("#noPastEvents").hidden=past.length>0;
+
+  const section=$("#nextEventSection");
+  if(!upcoming.length){section.hidden=true;return}
+  const e=upcoming[0],d=eventDateObject(e.date);
+  const days=Math.max(0,Math.ceil((d-today)/86400000));
+  $("#nextEventCard").innerHTML=`<article class="next-event-card-v25">
+    <div class="next-event-date-v25"><small>${d.toLocaleDateString(undefined,{month:"short"}).toUpperCase()}</small><strong>${d.getDate()}</strong><small>${d.getFullYear()}</small></div>
+    <div class="next-event-copy-v25"><h3>${esc(e.title)}</h3><p>${esc(e.type||"Community Event")}</p>${e.location?`<p>📍 ${esc(e.location)}</p>`:""}</div>
+    <div class="event-countdown-v25"><strong>${days}</strong>${days===1?"Day":"Days"} Away</div>
+  </article>`;
+  section.hidden=false;
+}
+async function loadEvents(){
+  if(!API_READY){renderEvents();return}
+  try{
+    const response=await jsonp("getEvents");
+    classEvents=response.items||[];
+    renderEvents();
+  }catch(error){
+    console.warn("Events endpoint is not active yet.",error);
+    renderEvents();
+  }
+}
+const eventForm=$("#eventForm");
+if(eventForm)eventForm.onsubmit=async event=>{
+  event.preventDefault();
+  if(!API_READY)return toast("Connect Apps Script first.");
+  const f=new FormData(event.target);
+  const payload={
+    title:f.get("title").trim(),
+    type:f.get("type"),
+    date:f.get("date"),
+    time:f.get("time"),
+    location:f.get("location").trim(),
+    description:f.get("description").trim(),
+    organizer:f.get("organizer").trim(),
+    contact:f.get("contact").trim(),
+    rsvpUrl:f.get("rsvpUrl").trim(),
+    status:"pending"
+  };
+  try{
+    await postData("submitEvent",payload);
+    event.target.reset();
+    event.target.closest(".modal").classList.remove("open");
+    toast("Event submitted for review.");
+  }catch(error){
+    console.error(error);
+    toast("The event could not be submitted.");
+  }
+};
+loadEvents();

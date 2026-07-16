@@ -246,10 +246,40 @@
         </div>
       </section>
 
-      <section id="eventsView" class="view">
-        <div class="page-heading"><div><p class="eyebrow purple">WHAT’S NEXT</p><h1>Events</h1></div></div>
-        <article class="info-panel"><strong>50th Reunion Memories</strong><p>Relive the milestone weekend through the class gallery.</p></article>
-        <article class="info-panel"><strong>Suggest the Next Gathering</strong><p>Use the class feed to suggest lunches, calls, and future reunions.</p></article>
+      <section id="eventsView" class="view events-view-v25">
+        <div class="events-hero-v25">
+          <div>
+            <p class="eyebrow gold">CLASS CONNECTIONS</p>
+            <h1>Community Events</h1>
+            <p>Stay connected through reunions, lunches, birthdays, celebrations, and community gatherings.</p>
+          </div>
+          <button data-open="eventModal" class="event-submit-button-v25">＋ Share an Event</button>
+        </div>
+
+        <div class="events-review-note-v25">
+          <span>✓</span>
+          <p>Submitted events are reviewed before they appear publicly.</p>
+        </div>
+
+        <section id="nextEventSection" class="next-event-section-v25" hidden>
+          <p class="eyebrow purple">COMING UP NEXT</p>
+          <div id="nextEventCard"></div>
+        </section>
+
+        <div class="events-section-heading-v25">
+          <div>
+            <p class="eyebrow purple">SAVE THE DATE</p>
+            <h2>Upcoming Events</h2>
+          </div>
+        </div>
+        <div id="upcomingEvents" class="events-grid-v25"></div>
+        <p id="noUpcomingEvents" class="events-empty-v25">No approved upcoming events have been posted yet.</p>
+
+        <details class="past-events-v25">
+          <summary>View Past Events</summary>
+          <div id="pastEvents" class="events-grid-v25"></div>
+          <p id="noPastEvents" class="events-empty-v25">No past events yet.</p>
+        </details>
       </section>
 
       <section id="memorialView" class="view memorial-view legacy-view-v231">
@@ -368,6 +398,70 @@
       <label>Your name<input name="author" required></label>
       <label>Message<textarea name="text" required maxlength="500"></textarea></label>
       <button class="primary-button" type="submit">Post Message</button>
+    </form>
+  </div>
+</div>
+
+
+<div id="eventModal" class="modal">
+  <div class="sheet event-sheet-v25">
+    <button class="close" data-close>×</button>
+    <p class="eyebrow purple">COMMUNITY CALENDAR</p>
+    <h2>Share an Event</h2>
+    <p class="event-form-intro-v25">Tell classmates what is happening. Your submission will be reviewed before it is posted.</p>
+
+    <form id="eventForm">
+      <label>Event title
+        <input name="title" required maxlength="100" placeholder="Example: Class Lunch at Pat’s">
+      </label>
+
+      <label>Event type
+        <select name="type" required>
+          <option value="">Choose a type</option>
+          <option>Reunion</option>
+          <option>Lunch</option>
+          <option>Dinner</option>
+          <option>Birthday Celebration</option>
+          <option>Celebration of Life</option>
+          <option>Community Event</option>
+          <option>Wedding</option>
+          <option>Family Reunion</option>
+          <option>Planning Meeting</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <div class="two-column">
+        <label>Date
+          <input name="date" type="date" required>
+        </label>
+        <label>Time
+          <input name="time" type="time">
+        </label>
+      </div>
+
+      <label>Location
+        <input name="location" maxlength="150" placeholder="Venue, city, or online">
+      </label>
+
+      <label>Description
+        <textarea name="description" required maxlength="700" placeholder="Who is invited? What should classmates know?"></textarea>
+      </label>
+
+      <div class="two-column">
+        <label>Organizer
+          <input name="organizer" required maxlength="80">
+        </label>
+        <label>Phone or email
+          <input name="contact" maxlength="120">
+        </label>
+      </div>
+
+      <label>RSVP or information link <span class="field-help">(optional)</span>
+        <input name="rsvpUrl" type="url" placeholder="https://">
+      </label>
+
+      <button class="primary-button" type="submit">Submit Event for Review</button>
     </form>
   </div>
 </div>

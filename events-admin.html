@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#4b0877">
+  <title>ClassConnect Event Review</title>
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <style>
+    :root{--purple:#4b0877;--gold:#f4c542;--paper:#f7f3f8;--ink:#28172f;--muted:#746b79;--green:#28785a;--red:#a73745}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+    header{padding:25px;background:linear-gradient(135deg,#4b0877,#28785a);color:#fff;border-bottom:4px solid var(--gold)}
+    header h1{margin:.2rem 0;font-family:Georgia,serif}.wrap{max-width:1000px;margin:auto;padding:20px}
+    .notice{padding:13px;border-left:4px solid var(--gold);background:#fff7d6;border-radius:10px}
+    .grid{display:grid;gap:14px;margin-top:18px}.card{padding:18px;border-radius:16px;background:#fff;box-shadow:0 8px 22px rgba(51,8,76,.1)}
+    .card h2{margin:.1rem 0;color:var(--purple);font-family:Georgia,serif}.meta{color:var(--muted);line-height:1.5}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.actions button{border:0;border-radius:10px;padding:10px 14px;color:#fff;font-weight:900}
+    .approve{background:var(--green)}.decline{background:var(--red)}.empty{text-align:center;padding:30px;color:var(--muted)}
+  </style>
+</head>
+<body>
+<header><h1>Pending Event Submissions</h1><p>Approve or decline events before they appear in ClassConnect.</p></header>
+<main class="wrap">
+  <div class="notice">This page uses the same <strong>config.js</strong> connection as ClassConnect.</div>
+  <div id="pendingEvents" class="grid"></div>
+  <p id="empty" class="empty">Loading pending events…</p>
+</main>
+<script src="config.js"></script>
+<script>
+const API_URL=(window.CLASSCONNECT_CONFIG?.apiUrl||"").trim();
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+function jsonp(action){return new Promise((resolve,reject)=>{const cb="ev_"+Date.now()+"_"+Math.floor(Math.random()*9999),s=document.createElement("script");window[cb]=d=>{delete window[cb];s.remove();resolve(d)};s.onerror=reject;s.src=API_URL+"?"+new URLSearchParams({action,callback:cb});document.body.appendChild(s)})}
+async function post(action,payload){await fetch(API_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:new URLSearchParams({action,payload:JSON.stringify(payload)})})}
+async function load(){try{const r=await jsonp("getPendingEvents"),items=r.items||[],box=document.getElementById("pendingEvents"),empty=document.getElementById("empty");box.innerHTML=items.map(e=>`<article class="card"><h2>${esc(e.title)}</h2><div class="meta"><strong>${esc(e.type||"Event")}</strong><br>${esc(e.date||"")} ${esc(e.time||"")}<br>${esc(e.location||"")}<br>Submitted by: ${esc(e.organizer||"")}<p>${esc(e.description||"")}</p>${e.contact?`Contact: ${esc(e.contact)}`:""}</div><div class="actions"><button class="approve" onclick="review('${esc(e.id)}','approved')">Approve</button><button class="decline" onclick="review('${esc(e.id)}','declined')">Decline</button></div></article>`).join("");empty.textContent=items.length?"":"No pending events.";empty.hidden=items.length>0}catch(e){document.getElementById("empty").textContent="Could not load pending events."}}
+async function review(id,status){await post("reviewEvent",{id,status});setTimeout(load,800)}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+
+/*
+CLASSCONNECT EVENTS PATCH
+Add this code to the bottom of your existing Google Apps Script project.
+
+IMPORTANT:
+Your existing doGet(e) and doPost(e) must route these actions:
+GET: getEvents, getPendingEvents
+POST: submitEvent, reviewEvent
+
+Add the marked cases to your current routing switch statements.
+*/
+
+const EVENTS_SHEET = "Events";
+
+function getEvents_() {
+  const sheet = getOrCreateEventsSheet_();
+  const rows = sheet.getDataRange().getValues();
+  if (rows.length < 2) return {items: []};
+  const headers = rows[0];
+  const items = rows.slice(1).map(row => rowToObject_(headers, row))
+    .filter(item => String(item.status).toLowerCase() === "approved");
+  return {items};
+}
+
+function getPendingEvents_() {
+  const sheet = getOrCreateEventsSheet_();
+  const rows = sheet.getDataRange().getValues();
+  if (rows.length < 2) return {items: []};
+  const headers = rows[0];
+  const items = rows.slice(1).map(row => rowToObject_(headers, row))
+    .filter(item => String(item.status).toLowerCase() === "pending");
+  return {items};
+}
+
+function submitEvent_(payload) {
+  const sheet = getOrCreateEventsSheet_();
+  const id = Utilities.getUuid();
+  sheet.appendRow([
+    id,
+    new Date(),
+    payload.title || "",
+    payload.type || "",
+    payload.date || "",
+    payload.time || "",
+    payload.location || "",
+    payload.description || "",
+    payload.organizer || "",
+    payload.contact || "",
+    payload.rsvpUrl || "",
+    "pending"
+  ]);
+  return {ok: true, id};
+}
+
+function reviewEvent_(payload) {
+  const sheet = getOrCreateEventsSheet_();
+  const values = sheet.getDataRange().getValues();
+  const headers = values[0];
+  const idCol = headers.indexOf("id");
+  const statusCol = headers.indexOf("status");
+  for (let i = 1; i < values.length; i++) {
+    if (String(values[i][idCol]) === String(payload.id)) {
+      sheet.getRange(i + 1, statusCol + 1).setValue(payload.status || "pending");
+      return {ok: true};
+    }
+  }
+  return {ok: false, error: "Event not found"};
+}
+
+function getOrCreateEventsSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(EVENTS_SHEET);
+  if (!sheet) {
+    sheet = ss.insertSheet(EVENTS_SHEET);
+    sheet.appendRow([
+      "id","submittedAt","title","type","date","time","location",
+      "description","organizer","contact","rsvpUrl","status"
+    ]);
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
+}
+
+function rowToObject_(headers, row) {
+  const obj = {};
+  headers.forEach((header, index) => obj[header] = row[index]);
+  return obj;
+}
+
+/*
+ADD THESE CASES TO YOUR EXISTING doGet ROUTER:
+
+case "getEvents":
+  result = getEvents_();
+  break;
+case "getPendingEvents":
+  result = getPendingEvents_();
+  break;
+
+ADD THESE CASES TO YOUR EXISTING doPost ROUTER:
+
+case "submitEvent":
+  result = submitEvent_(payload);
+  break;
+case "reviewEvent":
+  result = reviewEvent_(payload);
+  break;
+*/
