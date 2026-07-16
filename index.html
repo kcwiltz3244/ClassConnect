@@ -73,6 +73,7 @@
             <p>Every classmate has a story worth preserving—and every story helps keep our class connected.</p>
             <div class="hero-actions">
               <button data-open="profileModal" class="gold-button">✎ Add My Story</button>
+              <button data-open="findStoryModal" class="outline-button">🔎 Edit My Story</button>
               <button data-nav="feedView" class="outline-button">💬 Community Feed</button>
             </div>
           </div>
@@ -123,7 +124,10 @@
             <h1>Where Are They Now?</h1>
             <p class="page-intro">Reconnect through the stories, memories, and life journeys of the Class of 1976.</p>
           </div>
-          <button data-open="profileModal" class="round-button">＋</button>
+          <div class="story-heading-actions-v251">
+            <button data-open="findStoryModal" class="edit-story-button-v251">Edit My Story</button>
+            <button data-open="profileModal" class="round-button">＋</button>
+          </div>
         </div>
 
         <div class="directory-controls">
@@ -462,6 +466,38 @@
 
       <button class="primary-button" type="submit">Submit Event for Review</button>
     </form>
+  </div>
+</div>
+
+
+<div id="findStoryModal" class="modal">
+  <div class="sheet find-story-sheet-v251">
+    <button class="close" data-close>×</button>
+    <p class="eyebrow purple">YOUR YEARBOOK PAGE</p>
+    <h2>Find My Story</h2>
+    <p class="find-story-intro-v251">
+      In the next step, classmates will use this screen to locate their existing story before editing it.
+    </p>
+
+    <div class="find-story-preview-v251">
+      <span>🔎</span>
+      <div>
+        <strong>Edit without creating a duplicate</strong>
+        <p>We’ll connect this screen to name and email lookup after this layout is tested on both devices.</p>
+      </div>
+    </div>
+
+    <form id="findStoryPreviewForm">
+      <label>Full name
+        <input type="text" placeholder="Your full name" disabled>
+      </label>
+      <label>Email
+        <input type="email" placeholder="Your email" disabled>
+      </label>
+      <button type="button" class="primary-button" disabled>Find My Story</button>
+    </form>
+
+    <p class="find-story-note-v251">This screen is intentionally inactive during Step 1.</p>
   </div>
 </div>
 

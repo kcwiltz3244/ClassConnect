@@ -430,3 +430,19 @@ html{scroll-behavior:smooth}
 @media(max-width:520px){
   .events-grid-v25{grid-template-columns:1fr}
 }
+
+
+/* =========================================================
+   ClassConnect Version 2.5.1 — Edit My Story Step 1
+   ========================================================= */
+.story-heading-actions-v251{display:flex;align-items:center;gap:10px}
+.edit-story-button-v251{border:0;border-radius:12px;padding:11px 14px;background:#fff;color:var(--purple);font-weight:900;box-shadow:var(--shadow-soft)}
+.find-story-sheet-v251{max-width:620px}
+.find-story-intro-v251{color:var(--muted);line-height:1.55}
+.find-story-preview-v251{display:flex;gap:14px;align-items:flex-start;margin:16px 0;padding:16px;border-radius:14px;background:linear-gradient(135deg,#fff9e9,#f5edfb);border:1px solid rgba(75,8,119,.12)}
+.find-story-preview-v251>span{font-size:2rem}
+.find-story-preview-v251 strong{color:var(--purple)}
+.find-story-preview-v251 p{margin:.35rem 0 0;color:var(--muted);line-height:1.45}
+.find-story-note-v251{margin-top:12px;color:var(--muted);font-size:.85rem;text-align:center}
+.find-story-sheet-v251 input:disabled,.find-story-sheet-v251 button:disabled{opacity:.6;cursor:not-allowed}
+@media(max-width:560px){.story-heading-actions-v251{width:100%;justify-content:space-between}.page-heading{flex-wrap:wrap}}
