@@ -1,4 +1,4 @@
-const CACHE = "classconnect-v2.4-option4";
+const CACHE = "classconnect-v2.5.1-phonefix-2";
 const FILES = [
   "./",
   "./index.html",
@@ -8,24 +8,33 @@ const FILES = [
   "./manifest.webmanifest",
   "./classconnect-logo.png",
   "./icon-192.png",
-  "./icon-512.png"
+  "./icon-512.png",
+  "./events-admin.html"
 ];
 
 self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
+  event.waitUntil(
+    caches.open(CACHE).then(cache => cache.addAll(FILES))
+  );
   self.skipWaiting();
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE)
+          .map(key => caches.delete(key))
+      )
     )
   );
   self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
     fetch(event.request)
       .then(response => {
