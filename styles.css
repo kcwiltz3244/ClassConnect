@@ -446,3 +446,27 @@ html{scroll-behavior:smooth}
 .find-story-note-v251{margin-top:12px;color:var(--muted);font-size:.85rem;text-align:center}
 .find-story-sheet-v251 input:disabled,.find-story-sheet-v251 button:disabled{opacity:.6;cursor:not-allowed}
 @media(max-width:560px){.story-heading-actions-v251{width:100%;justify-content:space-between}.page-heading{flex-wrap:wrap}}
+
+
+/* Edit My Story Step 1 — phone visibility fix */
+.mobile-edit-story-v251{
+  display:none;
+}
+.edit-story-quick-v251{
+  border:2px solid rgba(75,8,119,.12)!important;
+  background:linear-gradient(135deg,#fff9e9,#f5edfb)!important;
+}
+@media(max-width:760px){
+  .mobile-edit-story-v251{
+    display:block;
+    width:100%;
+    margin:16px 0 6px;
+    min-height:50px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,#4b0877,#74289a);
+    color:#fff;
+    font-weight:900;
+    box-shadow:var(--shadow-soft);
+  }
+}
