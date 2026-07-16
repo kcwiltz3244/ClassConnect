@@ -1,0 +1,20 @@
+CLASSCONNECT STORY EDIT APPS SCRIPT PATCH
+
+ADD TO doGet SWITCH:
+case "lookupClassmate": result = lookupClassmate_(e.parameter.name, e.parameter.email); break;
+
+ADD TO doPost SWITCH:
+case "updateClassmate": result = updateClassmate_(payload); break;
+
+function lookupClassmate_(name,email){
+  const sh=SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Classmates"); if(!sh)return {item:null};
+  const v=sh.getDataRange().getValues(); if(v.length<2)return {item:null}; const h=v[0].map(String),nc=h.indexOf("name"),ec=h.indexOf("email");
+  const wn=String(name||"").trim().toLowerCase(),we=String(email||"").trim().toLowerCase();
+  for(let i=1;i<v.length;i++){if(String(v[i][nc]||"").trim().toLowerCase()===wn&&String(v[i][ec]||"").trim().toLowerCase()===we){const item={};h.forEach((x,j)=>item[x]=v[i][j]);item.id=i+1;return {item};}}
+  return {item:null};
+}
+function updateClassmate_(p){
+  const sh=SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Classmates"); if(!sh)return {ok:false}; const row=Number(p.id); if(!row||row<2||row>sh.getLastRow())return {ok:false};
+  const h=sh.getRange(1,1,1,sh.getLastColumn()).getValues()[0].map(String),r=sh.getRange(row,1,1,h.length).getValues()[0];
+  const u={name:p.name||"",city:p.city||"",state:p.state||"",birthday:p.birthday||"",career:p.career||"",favoriteMemory:p.favoriteMemory||"",email:p.email||"",phone:p.phone||"",bio:p.bio||"",showEmail:p.showEmail===true,showPhone:p.showPhone===true}; if(p.profilePhotoData)u.profilePhoto=p.profilePhotoData; h.forEach((x,j)=>{if(Object.prototype.hasOwnProperty.call(u,x))r[j]=u[x]}); sh.getRange(row,1,1,h.length).setValues([r]); return {ok:true};
+}
