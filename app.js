@@ -140,7 +140,7 @@ async function loadData(){
 }
 
 $("#enterAppBtn").onclick=()=>enterApp(0);
-$("#skipIntroBtn").onclick=()=>enterApp(24);
+const skipIntroBtn=$("#skipIntroBtn"); if(skipIntroBtn)skipIntroBtn.onclick=()=>enterApp(24);
 $("#showWelcomeBtn").onclick=showWelcome;
 if(Number(localStorage.getItem(WELCOME_SKIP_KEY)||0)>Date.now())enterApp(0);
 
