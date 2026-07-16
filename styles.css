@@ -484,3 +484,60 @@ html{scroll-behavior:smooth}
 .purpose-button-v26{min-width:165px;white-space:nowrap}
 @media(max-width:900px){.purpose-card-v26{grid-template-columns:auto 1fr}.purpose-button-v26{grid-column:1/-1;width:100%}}
 @media(max-width:560px){.purpose-card-v26{grid-template-columns:1fr;padding:20px 17px}.purpose-icon-v26{width:56px;height:56px}.purpose-copy-v26 h2{font-size:1.55rem}.purpose-copy-v26 p{font-size:.94rem}.purpose-button-v26{width:100%}}
+
+
+/* =========================================================
+   ClassConnect Version 2.6.1 — Reunion Purpose Message
+   Positioned immediately below the Class of 1976 hero.
+   ========================================================= */
+.reunion-message-v261{
+  margin:22px 0;
+  align-items:start;
+  padding:25px;
+}
+.reunion-message-icon-v261{
+  width:62px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff3c4,#f4c542);
+  box-shadow:var(--shadow-soft);
+  font-size:1.8rem;
+}
+.reunion-message-copy-v261 h2{
+  margin:.25rem 0 12px;
+  color:var(--purple);
+  font:700 clamp(1.45rem,3vw,2.05rem) Georgia,serif;
+}
+.reunion-message-copy-v261 p{
+  max-width:860px;
+  margin:.66rem 0;
+  color:#514655;
+  line-height:1.58;
+}
+.reunion-message-copy-v261 em{
+  color:var(--purple);
+}
+.reunion-closing-v261{
+  color:var(--purple)!important;
+  font:italic 1.08rem Georgia,serif;
+}
+@media(max-width:900px){
+  .reunion-message-v261{
+    grid-template-columns:auto 1fr;
+  }
+  .reunion-message-v261 .journey-button-v26{
+    grid-column:1/-1;
+    width:100%;
+  }
+}
+@media(max-width:560px){
+  .reunion-message-v261{
+    grid-template-columns:1fr;
+    padding:20px 17px;
+  }
+  .reunion-message-copy-v261 h2{
+    font-size:1.48rem;
+  }
+}
