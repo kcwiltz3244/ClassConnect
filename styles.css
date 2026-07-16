@@ -433,71 +433,70 @@ html{scroll-behavior:smooth}
 
 
 /* =========================================================
-   ClassConnect Version 2.5.1 — Edit My Story Step 1
+   ClassConnect Version 2.6.3 — Purpose on Welcome Screen
    ========================================================= */
-.story-heading-actions-v251{display:flex;align-items:center;gap:10px}
-.edit-story-button-v251{border:0;border-radius:12px;padding:11px 14px;background:#fff;color:var(--purple);font-weight:900;box-shadow:var(--shadow-soft)}
-.find-story-sheet-v251{max-width:620px}
-.find-story-intro-v251{color:var(--muted);line-height:1.55}
-.find-story-preview-v251{display:flex;gap:14px;align-items:flex-start;margin:16px 0;padding:16px;border-radius:14px;background:linear-gradient(135deg,#fff9e9,#f5edfb);border:1px solid rgba(75,8,119,.12)}
-.find-story-preview-v251>span{font-size:2rem}
-.find-story-preview-v251 strong{color:var(--purple)}
-.find-story-preview-v251 p{margin:.35rem 0 0;color:var(--muted);line-height:1.45}
-.find-story-note-v251{margin-top:12px;color:var(--muted);font-size:.85rem;text-align:center}
-.find-story-sheet-v251 input:disabled,.find-story-sheet-v251 button:disabled{opacity:.6;cursor:not-allowed}
-@media(max-width:560px){.story-heading-actions-v251{width:100%;justify-content:space-between}.page-heading{flex-wrap:wrap}}
-
-
-/* Edit My Story Step 1 — phone visibility fix */
-.mobile-edit-story-v251{
-  display:none;
+.intro-screen.intro-purpose-v263{
+  overflow-y:auto;
+  align-items:flex-start;
+  padding:30px 18px;
 }
-.edit-story-quick-v251{
-  border:2px solid rgba(75,8,119,.12)!important;
-  background:linear-gradient(135deg,#fff9e9,#f5edfb)!important;
+.intro-purpose-content-v263{
+  width:min(720px,100%);
+  margin:auto;
+  padding:8px 0 30px;
 }
-@media(max-width:760px){
-  .mobile-edit-story-v251{
-    display:block;
-    width:100%;
-    margin:16px 0 6px;
-    min-height:50px;
-    border:0;
-    border-radius:14px;
-    background:linear-gradient(135deg,#4b0877,#74289a);
-    color:#fff;
-    font-weight:900;
-    box-shadow:var(--shadow-soft);
-  }
+.intro-purpose-content-v263 .crest-large{
+  margin:0 auto 12px;
 }
-
-
-/* ClassConnect v2.6 — Why ClassConnect Exists
-   Keeps the approved card position and layout. */
-.purpose-card-v26{align-items:center}
-.purpose-icon-v26{width:66px;height:66px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#fff2b7,#f4c542);box-shadow:var(--shadow-soft);font-size:2rem}
-.purpose-copy-v26 h2{margin:.2rem 0 .45rem}
-.purpose-copy-v26 p{margin:.38rem 0;color:#514655;line-height:1.48}
-.purpose-motto-v26{color:var(--purple)!important;font-family:Georgia,serif}
-.purpose-motto-v26 strong{font-family:Arial,sans-serif;font-size:.72rem;letter-spacing:.05em;color:#8a6300}
-.purpose-welcome-v26{color:var(--purple)!important;font-family:Georgia,serif;font-style:italic}
-.purpose-button-v26{min-width:165px;white-space:nowrap}
-@media(max-width:900px){.purpose-card-v26{grid-template-columns:auto 1fr}.purpose-button-v26{grid-column:1/-1;width:100%}}
-@media(max-width:560px){.purpose-card-v26{grid-template-columns:1fr;padding:20px 17px}.purpose-icon-v26{width:56px;height:56px}.purpose-copy-v26 h2{font-size:1.55rem}.purpose-copy-v26 p{font-size:.94rem}.purpose-button-v26{width:100%}}
-
-
-/* =========================================================
-   ClassConnect Version 2.6.1 — Reunion Purpose Message
-   Positioned immediately below the Class of 1976 hero.
-   ========================================================= */
-.reunion-message-v261{
+.intro-purpose-content-v263>h1{
+  margin:.15rem 0;
+}
+.intro-purpose-content-v263>h2{
+  margin:.2rem 0 16px;
+}
+.welcome-purpose-card-v263{
+  margin:18px auto;
+  padding:24px 27px;
+  border:2px solid rgba(244,197,66,.72);
+  border-radius:22px;
+  background:rgba(255,253,247,.94);
+  color:#433948;
+  text-align:left;
+  box-shadow:0 18px 46px rgba(41,5,57,.22);
+  backdrop-filter:blur(4px);
+}
+.welcome-purpose-card-v263 .eyebrow{
+  margin:0 0 12px;
+  text-align:center;
+}
+.welcome-purpose-card-v263 p{
+  margin:.72rem 0;
+  line-height:1.58;
+}
+.welcome-promise-v263{
+  color:var(--purple);
+  text-align:center;
+  font:700 1.45rem Georgia,serif;
+}
+.welcome-closing-v263{
+  color:var(--purple);
+  text-align:center;
+  font:italic 1.12rem Georgia,serif;
+}
+.enter-classconnect-v263{
+  min-width:260px;
+  min-height:52px;
+  margin-top:2px;
+  font-size:1rem;
+}
+.then-now-card-v263{
   margin:22px 0;
-  align-items:start;
-  padding:25px;
+  padding:21px 24px;
+  align-items:center;
 }
-.reunion-message-icon-v261{
-  width:62px;
-  height:62px;
+.then-now-icon-v263{
+  width:60px;
+  height:60px;
   display:grid;
   place-items:center;
   border-radius:50%;
@@ -505,39 +504,49 @@ html{scroll-behavior:smooth}
   box-shadow:var(--shadow-soft);
   font-size:1.8rem;
 }
-.reunion-message-copy-v261 h2{
-  margin:.25rem 0 12px;
+.then-now-copy-v263 h2{
+  margin:.2rem 0 .45rem;
   color:var(--purple);
-  font:700 clamp(1.45rem,3vw,2.05rem) Georgia,serif;
+  font:700 clamp(1.5rem,3vw,2rem) Georgia,serif;
 }
-.reunion-message-copy-v261 p{
-  max-width:860px;
-  margin:.66rem 0;
+.then-now-copy-v263 p{
+  max-width:720px;
+  margin:0;
   color:#514655;
-  line-height:1.58;
+  line-height:1.55;
 }
-.reunion-message-copy-v261 em{
-  color:var(--purple);
-}
-.reunion-closing-v261{
-  color:var(--purple)!important;
-  font:italic 1.08rem Georgia,serif;
-}
-@media(max-width:900px){
-  .reunion-message-v261{
-    grid-template-columns:auto 1fr;
+@media(max-width:760px){
+  .intro-screen.intro-purpose-v263{
+    padding:20px 12px 28px;
   }
-  .reunion-message-v261 .journey-button-v26{
+  .intro-purpose-content-v263 .crest-large{
+    width:92px;
+    height:92px;
+  }
+  .intro-purpose-content-v263>h1{
+    font-size:2.35rem;
+  }
+  .welcome-purpose-card-v263{
+    padding:20px 18px;
+    font-size:.94rem;
+  }
+  .then-now-card-v263{
+    grid-template-columns:auto 1fr;
+    padding:18px;
+  }
+  .then-now-card-v263 .journey-button-v26{
     grid-column:1/-1;
     width:100%;
   }
 }
-@media(max-width:560px){
-  .reunion-message-v261{
-    grid-template-columns:1fr;
-    padding:20px 17px;
+@media(max-width:480px){
+  .welcome-purpose-card-v263{
+    padding:18px 15px;
   }
-  .reunion-message-copy-v261 h2{
-    font-size:1.48rem;
+  .welcome-purpose-card-v263 p{
+    line-height:1.5;
+  }
+  .then-now-card-v263{
+    grid-template-columns:1fr;
   }
 }
