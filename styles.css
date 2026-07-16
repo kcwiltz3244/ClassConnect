@@ -470,3 +470,17 @@ html{scroll-behavior:smooth}
     box-shadow:var(--shadow-soft);
   }
 }
+
+
+/* ClassConnect v2.6 — Why ClassConnect Exists
+   Keeps the approved card position and layout. */
+.purpose-card-v26{align-items:center}
+.purpose-icon-v26{width:66px;height:66px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#fff2b7,#f4c542);box-shadow:var(--shadow-soft);font-size:2rem}
+.purpose-copy-v26 h2{margin:.2rem 0 .45rem}
+.purpose-copy-v26 p{margin:.38rem 0;color:#514655;line-height:1.48}
+.purpose-motto-v26{color:var(--purple)!important;font-family:Georgia,serif}
+.purpose-motto-v26 strong{font-family:Arial,sans-serif;font-size:.72rem;letter-spacing:.05em;color:#8a6300}
+.purpose-welcome-v26{color:var(--purple)!important;font-family:Georgia,serif;font-style:italic}
+.purpose-button-v26{min-width:165px;white-space:nowrap}
+@media(max-width:900px){.purpose-card-v26{grid-template-columns:auto 1fr}.purpose-button-v26{grid-column:1/-1;width:100%}}
+@media(max-width:560px){.purpose-card-v26{grid-template-columns:1fr;padding:20px 17px}.purpose-icon-v26{width:56px;height:56px}.purpose-copy-v26 h2{font-size:1.55rem}.purpose-copy-v26 p{font-size:.94rem}.purpose-button-v26{width:100%}}
