@@ -116,6 +116,7 @@
         </section>
         <section class="quick-access quick-access-v23">
           <button data-nav="contactDirectoryView" class="class-directory-card-v271"><span>📇</span><div><strong>Class Directory</strong><small>Phone numbers, emails, and ways to reconnect</small></div></button>
+          <button type="button" class="function-guide-card-v273" onclick="window.location.href='ClassConnect-Function-Guide.docx'"><span>📘</span><div><strong>ClassConnect Function Guide</strong><small>Learn what each feature does</small></div></button>
           <button data-nav="peopleView"><span>👥</span><div><strong>Where Are They Now?</strong><small>Stories from classmates</small></div></button>
           <button data-open="findStoryModal" class="edit-story-quick-v251"><span>✏️</span><div><strong>Edit My Story</strong><small>Find your yearbook page</small></div></button>
           <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Greetings and updates</small></div></button>
@@ -136,7 +137,7 @@
         </section>
         <section class="dashboard-grid dashboard-grid-v23">
           <article class="dashboard-card"><header><strong>WHO’S NEW</strong><button data-nav="peopleView">View all</button></header><div id="newClassmates"></div></article>
-          <article class="dashboard-card wide"><header><strong>RECENT CLASS FEED</strong><button data-nav="feedView">View all</button></header><div id="homeFeed"></div></article>
+          <article class="dashboard-card wide"><header><strong>RECENT COMMUNITY FEED</strong><button data-nav="feedView">View all</button></header><div id="homeFeed"></div></article>
           <article class="quote-card"><p class="quote-mark">“</p><blockquote id="homeQuote">The memories never graduated.</blockquote><small>— Class of 1976</small></article>
         </section>
       </section>
@@ -195,7 +196,7 @@
 
       <section id="feedView" class="view">
         <div class="page-heading">
-          <div><p class="eyebrow purple">OUR COMMUNITY</p><h1>Class Feed</h1><p class="page-intro">A friendly place to say hello, share news, and keep the conversation going.</p></div>
+          <div><p class="eyebrow purple">OUR COMMUNITY</p><h1>Community Feed</h1><p class="page-intro">A friendly place to say hello, share news, and keep the conversation going.</p></div>
           <button data-open="messageModal" class="round-button">＋</button>
         </div>
         <div id="messageFeed" class="feed-list"></div>
@@ -527,22 +528,24 @@
     <p class="eyebrow purple">YOUR YEARBOOK PAGE</p>
     <h2>Edit My Story</h2>
     <p class="find-story-intro-v251">
-      Enter the same full name and email used when your story was added. This helps us find the correct page without creating a duplicate.
+      Search for your name, select it from the results, then enter the email used when your story was added.
     </p>
 
     <div class="find-story-preview-v251">
       <span>🔎</span>
       <div>
         <strong>Find your existing story</strong>
-        <p>After it is found, your information will open so you can make changes and save them.</p>
+        <p>After your identity is verified, your information will open so you can make changes and save them.</p>
       </div>
     </div>
 
     <form id="findStoryForm">
-      <label>Full name
-        <input id="editLookupName" type="text" autocomplete="name" placeholder="Your full name" required>
+      <label>Search for your name
+        <input id="editLookupName" type="search" autocomplete="off" placeholder="Type a first, last, or class name" required aria-controls="editNameResults" aria-autocomplete="list">
       </label>
-      <label>Email
+      <div id="editNameResults" class="edit-name-results-v273" role="listbox" hidden></div>
+      <p id="editSelectedName" class="edit-selected-name-v273" hidden></p>
+      <label>Email used with your story
         <input id="editLookupEmail" type="email" autocomplete="email" placeholder="Your email" required>
       </label>
       <button id="findStoryBtn" type="submit" class="primary-button">Find My Story</button>

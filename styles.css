@@ -917,3 +917,59 @@ html{scroll-behavior:smooth}
   .quick-access.quick-access-v23 .class-directory-card-v271 strong{font-size:1.08rem}
   .quick-access.quick-access-v23 .class-directory-card-v271 small{font-size:.78rem;line-height:1.35}
 }
+
+
+/* =========================================================
+   ClassConnect Version 2.7.3 — searchable story edit + guide
+   ========================================================= */
+.edit-name-results-v273{
+  display:grid;
+  gap:7px;
+  max-height:260px;
+  margin:-5px 0 14px;
+  padding:8px;
+  overflow-y:auto;
+  border:1px solid #dfd1e4;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 12px 28px rgba(49,4,69,.14);
+}
+.edit-name-results-v273[hidden]{display:none}
+.edit-name-results-v273 button{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #eee4f1;
+  border-radius:11px;
+  background:#fcf9fd;
+  color:#39243f;
+  text-align:left;
+  cursor:pointer;
+}
+.edit-name-results-v273 button:hover,.edit-name-results-v273 button:focus{
+  border-color:#b793c6;
+  background:#f6edfa;
+  outline:none;
+}
+.edit-name-results-v273 strong,.edit-name-results-v273 small{display:block}
+.edit-name-results-v273 small{margin-top:3px;color:#746879;font-size:.78rem}
+.edit-name-results-v273 p{margin:0;padding:12px;color:#746879;text-align:center}
+.edit-selected-name-v273{
+  margin:-5px 0 14px;
+  padding:10px 12px;
+  border-radius:11px;
+  background:#f3eafa;
+  color:#4b0877;
+  font-size:.9rem;
+}
+.quick-access.quick-access-v23 .function-guide-card-v273{
+  border:1px solid rgba(75,8,119,.16);
+  background:linear-gradient(145deg,#fffaf0,#f7effb);
+}
+.quick-access.quick-access-v23 .function-guide-card-v273 span{
+  background:linear-gradient(145deg,#fff0a8,#f4c542);
+  color:#4b0877;
+}
+@media(max-width:480px){
+  .edit-name-results-v273{max-height:220px}
+  .edit-name-results-v273 button{min-height:56px;padding:12px}
+}
