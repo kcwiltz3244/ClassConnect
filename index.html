@@ -422,6 +422,8 @@
     <h2>Add My Story</h2>
     <p>Your information appears automatically after submission.</p>
     <form id="profileForm">
+      <input type="hidden" name="recordId" id="profileRecordId">
+      <input type="hidden" name="formMode" id="profileFormMode" value="add">
       <label>Profile photo<input id="profilePhotoInput" name="profilePhoto" type="file" accept="image/*"><small class="field-help">Choose one photo from your phone or computer. It will be resized automatically.</small></label>
       <div id="photoPreview" class="photo-preview hidden"></div>
       <label>Full name<input name="name" required maxlength="70"></label>
@@ -523,30 +525,30 @@
   <div class="sheet find-story-sheet-v251">
     <button class="close" data-close>×</button>
     <p class="eyebrow purple">YOUR YEARBOOK PAGE</p>
-    <h2>Find My Story</h2>
+    <h2>Edit My Story</h2>
     <p class="find-story-intro-v251">
-      In the next step, classmates will use this screen to locate their existing story before editing it.
+      Enter the same full name and email used when your story was added. This helps us find the correct page without creating a duplicate.
     </p>
 
     <div class="find-story-preview-v251">
       <span>🔎</span>
       <div>
-        <strong>Edit without creating a duplicate</strong>
-        <p>We’ll connect this screen to name and email lookup after this layout is tested on both devices.</p>
+        <strong>Find your existing story</strong>
+        <p>After it is found, your information will open so you can make changes and save them.</p>
       </div>
     </div>
 
-    <form id="findStoryPreviewForm">
+    <form id="findStoryForm">
       <label>Full name
-        <input type="text" placeholder="Your full name" disabled>
+        <input id="editLookupName" type="text" autocomplete="name" placeholder="Your full name" required>
       </label>
       <label>Email
-        <input type="email" placeholder="Your email" disabled>
+        <input id="editLookupEmail" type="email" autocomplete="email" placeholder="Your email" required>
       </label>
-      <button type="button" class="primary-button" disabled>Find My Story</button>
+      <button id="findStoryBtn" type="submit" class="primary-button">Find My Story</button>
     </form>
 
-    <p class="find-story-note-v251">This screen is intentionally inactive during Step 1.</p>
+    <div id="storyLookupStatus" class="story-lookup-status-v251" role="status" aria-live="polite"></div>
   </div>
 </div>
 
@@ -554,5 +556,6 @@
 <script src="config.js"></script>
 <script src="app.js"></script>
 <script src="directory-v27.js"></script>
+<script src="edit-story-v272.js"></script>
 </body>
 </html>
