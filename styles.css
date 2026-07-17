@@ -676,3 +676,90 @@ html{scroll-behavior:smooth}
   .home-action-card-v265{min-height:82px;padding:14px 16px}
   .journey-hero-button-v265{width:100%}
 }
+
+
+/* =========================================================
+   ClassConnect Version 2.6.6 — Clear Home Page Journey
+   ========================================================= */
+.hero-journey-action-v265{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:7px;
+  margin-top:24px;
+}
+.journey-next-label-v266{
+  color:#fff4bd;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.journey-hero-button-v266{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  width:min(100%,390px);
+  min-height:72px;
+  padding:14px 22px;
+  border:2px solid rgba(255,255,255,.72);
+  border-radius:18px;
+  text-align:left;
+  box-shadow:0 14px 30px rgba(21,0,32,.30),0 0 0 5px rgba(244,197,66,.14);
+}
+.journey-hero-button-v266 span{
+  font-size:1.25rem;
+  line-height:1.1;
+}
+.journey-hero-button-v266 small{
+  display:block;
+  margin-top:5px;
+  color:#392043;
+  font-size:.82rem;
+  font-weight:800;
+}
+.home-action-flow-v266{
+  grid-template-columns:1fr;
+  max-width:760px;
+  margin:24px auto 30px;
+}
+.home-action-step-v266{
+  margin:0 0 -3px;
+  color:#665b69;
+  text-align:center;
+  font:italic 1rem Georgia,serif;
+}
+.add-story-card-v266{
+  position:relative;
+  min-height:106px;
+  border:2px solid rgba(75,8,119,.18);
+  background:linear-gradient(135deg,#fff8dd,#f6ebff);
+  box-shadow:0 14px 30px rgba(49,4,69,.14);
+}
+.add-story-card-v266 strong{font-size:1.18rem}
+.action-arrow-v266{
+  margin-left:auto;
+  color:var(--purple);
+  font-size:1.65rem;
+  font-weight:900;
+}
+.community-card-v266{
+  min-height:78px;
+  margin-top:-3px;
+  background:#fff;
+  box-shadow:0 8px 18px rgba(49,4,69,.08);
+}
+.community-card-v266 .home-action-icon-v265{
+  flex-basis:44px;
+  width:44px;
+  height:44px;
+  font-size:1.25rem;
+}
+@media(max-width:700px){
+  .hero-journey-action-v265{align-items:stretch}
+  .journey-next-label-v266{text-align:center}
+  .journey-hero-button-v266{width:100%;align-items:center;text-align:center}
+  .home-action-flow-v266{margin-top:18px}
+  .home-action-step-v266{padding:0 12px;font-size:.95rem}
+  .add-story-card-v266{min-height:96px}
+}
