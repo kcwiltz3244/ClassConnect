@@ -550,3 +550,64 @@ html{scroll-behavior:smooth}
     grid-template-columns:1fr;
   }
 }
+
+/* =========================================================
+   ClassConnect Version 2.6.4 — Kevin's Welcome Message
+   ========================================================= */
+.intro-screen.intro-purpose-v263{
+  background:
+    radial-gradient(circle at 16% 10%,rgba(244,197,66,.28),transparent 24%),
+    radial-gradient(circle at 88% 76%,rgba(171,111,198,.28),transparent 28%),
+    linear-gradient(155deg,#310345 0%,#5c157c 48%,#23002f 100%);
+}
+.welcome-purpose-card-v263{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,224,128,.72);
+  background:
+    linear-gradient(135deg,rgba(255,247,218,.94),rgba(244,232,252,.94));
+  box-shadow:
+    0 20px 52px rgba(24,0,35,.34),
+    inset 0 1px 0 rgba(255,255,255,.82);
+}
+.welcome-purpose-card-v263::before{
+  content:"";
+  position:absolute;
+  width:170px;
+  height:170px;
+  right:-72px;
+  top:-82px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(244,197,66,.30),rgba(244,197,66,0) 70%);
+  pointer-events:none;
+}
+.welcome-purpose-card-v263::after{
+  content:"76";
+  position:absolute;
+  right:18px;
+  bottom:-19px;
+  color:rgba(75,8,119,.055);
+  font:700 7rem Georgia,serif;
+  line-height:1;
+  pointer-events:none;
+}
+.welcome-purpose-card-v263 .eyebrow,
+.welcome-purpose-card-v263 p{
+  position:relative;
+  z-index:1;
+}
+.welcome-purpose-card-v263 .eyebrow{
+  padding-bottom:11px;
+  border-bottom:1px solid rgba(75,8,119,.14);
+  letter-spacing:.12em;
+}
+.welcome-signature-v264{
+  margin:1rem 0 .1rem!important;
+  color:var(--purple);
+  text-align:right;
+  font:italic 700 1.12rem Georgia,serif;
+}
+@media(max-width:480px){
+  .welcome-purpose-card-v263::after{font-size:5.5rem;right:8px}
+  .welcome-signature-v264{font-size:1.02rem}
+}
