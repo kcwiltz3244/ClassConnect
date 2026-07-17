@@ -1,79 +1,188 @@
-CLASSCONNECT EDIT MY STORY — APPS SCRIPT PATCH (NO EMAIL REQUIRED)
+CLASSCONNECT EDIT MY STORY — APPS SCRIPT PATCH v2.7.9
+NO EMAIL REQUIRED • ROBUST NAME LOOKUP
 
-The Edit My Story search in v2.7.7 does not require an email address.
+WHY THIS PATCH IS NEEDED
+The selected name can appear in the search list but still fail during lookup when
+the spreadsheet header is "Name" instead of "name", or when the public class list
+does not include a row ID. This version normalizes the headers and searches by
+the exact selected classmate name.
 
 ADD TO THE doGet ACTION SWITCH:
-case "lookupClassmate": result = lookupClassmate_(e.parameter.id, e.parameter.name); break;
+case "lookupClassmate":
+  result = lookupClassmate_(e.parameter.id, e.parameter.name);
+  break;
 
 ADD TO THE doPost ACTION SWITCH:
-case "updateClassmate": result = updateClassmate_(payload); break;
+case "updateClassmate":
+  result = updateClassmate_(payload);
+  break;
 
 ADD OR REPLACE THESE FUNCTIONS:
 
-function lookupClassmate_(id,name){
-  const sh=SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Classmates");
-  if(!sh)return {item:null};
+function ccNormalizeHeader_(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
 
-  const v=sh.getDataRange().getValues();
-  if(v.length<2)return {item:null};
+function ccFindClassmatesSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const preferredNames = ["Classmates", "Classmate", "Profiles", "Stories"];
 
-  const h=v[0].map(String);
-  const requestedRow=Number(id);
-
-  // Prefer the selected record ID when the public class list includes one.
-  if(requestedRow && requestedRow>=2 && requestedRow<=sh.getLastRow()){
-    const rowValues=v[requestedRow-1];
-    const item={};
-    h.forEach((x,j)=>item[x]=rowValues[j]);
-    item.id=requestedRow;
-    return {item};
+  for (const name of preferredNames) {
+    const sheet = ss.getSheetByName(name);
+    if (sheet) return sheet;
   }
 
-  // Fall back to the exact selected classmate name.
-  const nc=h.indexOf("name");
-  const wantedName=String(name||"").trim().toLowerCase();
-
-  for(let i=1;i<v.length;i++){
-    if(String(v[i][nc]||"").trim().toLowerCase()===wantedName){
-      const item={};
-      h.forEach((x,j)=>item[x]=v[i][j]);
-      item.id=i+1;
-      return {item};
+  // Fallback: find a sheet containing a recognizable name column.
+  for (const sheet of ss.getSheets()) {
+    if (sheet.getLastRow() < 1 || sheet.getLastColumn() < 1) continue;
+    const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn())
+      .getValues()[0]
+      .map(ccNormalizeHeader_);
+    if (
+      headers.includes("name") ||
+      headers.includes("fullname") ||
+      headers.includes("classmatename")
+    ) {
+      return sheet;
     }
   }
-  return {item:null};
+  return null;
 }
 
-function updateClassmate_(p){
-  const sh=SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Classmates");
-  if(!sh)return {ok:false};
+function ccObjectFromRow_(headers, rowValues, rowNumber) {
+  const item = {};
+  headers.forEach((header, index) => {
+    item[header] = rowValues[index];
+  });
+  item.id = rowNumber;
+  item.recordId = rowNumber;
+  return item;
+}
 
-  const row=Number(p.id);
-  if(!row||row<2||row>sh.getLastRow())return {ok:false};
+function lookupClassmate_(id, name) {
+  const sh = ccFindClassmatesSheet_();
+  if (!sh) return { item: null, error: "Classmates sheet not found." };
 
-  const h=sh.getRange(1,1,1,sh.getLastColumn()).getValues()[0].map(String);
-  const r=sh.getRange(row,1,1,h.length).getValues()[0];
-  const u={
-    name:p.name||"",
-    city:p.city||"",
-    state:p.state||"",
-    birthday:p.birthday||"",
-    career:p.career||"",
-    favoriteMemory:p.favoriteMemory||"",
-    email:p.email||"",
-    phone:p.phone||"",
-    bio:p.bio||"",
-    showEmail:p.showEmail===true,
-    showPhone:p.showPhone===true
+  const values = sh.getDataRange().getValues();
+  if (values.length < 2) return { item: null };
+
+  const rawHeaders = values[0].map(value => String(value || "").trim());
+  const normalizedHeaders = rawHeaders.map(ccNormalizeHeader_);
+  const requestedRow = Number(id);
+
+  // Use the selected record ID when it is available and valid.
+  if (requestedRow && requestedRow >= 2 && requestedRow <= sh.getLastRow()) {
+    return {
+      item: ccObjectFromRow_(rawHeaders, values[requestedRow - 1], requestedRow)
+    };
+  }
+
+  // Find a likely classmate-name column regardless of capitalization or spacing.
+  const nameAliases = [
+    "name",
+    "fullname",
+    "classmatename",
+    "studentname",
+    "displayname"
+  ];
+
+  let nameColumn = -1;
+  for (const alias of nameAliases) {
+    nameColumn = normalizedHeaders.indexOf(alias);
+    if (nameColumn !== -1) break;
+  }
+
+  if (nameColumn === -1) {
+    return { item: null, error: "No name column was found." };
+  }
+
+  const wantedName = String(name || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+
+  for (let rowIndex = 1; rowIndex < values.length; rowIndex++) {
+    const sheetName = String(values[rowIndex][nameColumn] || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+    if (sheetName === wantedName) {
+      return {
+        item: ccObjectFromRow_(rawHeaders, values[rowIndex], rowIndex + 1)
+      };
+    }
+  }
+
+  return { item: null };
+}
+
+function updateClassmate_(payload) {
+  const sh = ccFindClassmatesSheet_();
+  if (!sh) return { ok: false, error: "Classmates sheet not found." };
+
+  const row = Number(payload.id || payload.recordId);
+  if (!row || row < 2 || row > sh.getLastRow()) {
+    return { ok: false, error: "Invalid classmate record." };
+  }
+
+  const rawHeaders = sh
+    .getRange(1, 1, 1, sh.getLastColumn())
+    .getValues()[0]
+    .map(value => String(value || "").trim());
+
+  const normalizedHeaders = rawHeaders.map(ccNormalizeHeader_);
+  const rowValues = sh.getRange(row, 1, 1, rawHeaders.length).getValues()[0];
+
+  const updates = {
+    name: payload.name || "",
+    fullname: payload.name || "",
+    classmatename: payload.name || "",
+    city: payload.city || "",
+    state: payload.state || "",
+    birthday: payload.birthday || "",
+    career: payload.career || "",
+    favoritememory: payload.favoriteMemory || "",
+    email: payload.email || "",
+    phone: payload.phone || "",
+    bio: payload.bio || "",
+    biography: payload.bio || "",
+    showemail: payload.showEmail === true,
+    showphone: payload.showPhone === true
   };
 
-  if(p.profilePhotoData)u.profilePhoto=p.profilePhotoData;
-  h.forEach((x,j)=>{if(Object.prototype.hasOwnProperty.call(u,x))r[j]=u[x]});
-  sh.getRange(row,1,1,h.length).setValues([r]);
-  return {ok:true};
+  normalizedHeaders.forEach((header, columnIndex) => {
+    if (Object.prototype.hasOwnProperty.call(updates, header)) {
+      rowValues[columnIndex] = updates[header];
+    }
+  });
+
+  if (payload.profilePhotoData) {
+    const photoAliases = ["profilephoto", "photo", "profileimage"];
+    for (const alias of photoAliases) {
+      const photoColumn = normalizedHeaders.indexOf(alias);
+      if (photoColumn !== -1) {
+        rowValues[photoColumn] = payload.profilePhotoData;
+        break;
+      }
+    }
+  }
+
+  sh.getRange(row, 1, 1, rawHeaders.length).setValues([rowValues]);
+  return { ok: true };
 }
 
-After saving the Apps Script, deploy a NEW VERSION of the web app and keep the same access settings used by ClassConnect.
+AFTER ADDING THE PATCH
+1. Save the Apps Script.
+2. Choose Deploy → Manage deployments.
+3. Edit the web-app deployment.
+4. Select New version.
+5. Deploy using the same access settings.
+6. Keep the existing web-app URL unless Google gives you a new one.
 
-PRIVACY NOTE:
-Without email verification, anyone who can open ClassConnect and select a classmate's name may be able to open and change that story. Consider adding a private PIN later if stronger protection is desired.
+PRIVACY NOTE
+Email is not required. Anyone who can select a classmate's name may be able to
+open that story. A private PIN can be added later for stronger protection.
