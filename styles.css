@@ -962,12 +962,28 @@ html{scroll-behavior:smooth}
   font-size:.9rem;
 }
 .quick-access.quick-access-v23 .function-guide-card-v273{
-  border:1px solid rgba(75,8,119,.16);
-  background:linear-gradient(145deg,#fffaf0,#f7effb);
+  border:2px solid #f4c542;
+  background:
+    radial-gradient(circle at 92% 18%,rgba(244,197,66,.28),transparent 28%),
+    linear-gradient(135deg,#4b0877 0%,#6b238d 58%,#351046 100%);
+  color:#fff;
+  box-shadow:0 10px 24px rgba(51,8,76,.22);
+}
+.quick-access.quick-access-v23 .function-guide-card-v273:hover,
+.quick-access.quick-access-v23 .function-guide-card-v273:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(51,8,76,.28);
+}
+.quick-access.quick-access-v23 .function-guide-card-v273 strong{
+  color:#fff;
+}
+.quick-access.quick-access-v23 .function-guide-card-v273 small{
+  color:#f9eaa8;
 }
 .quick-access.quick-access-v23 .function-guide-card-v273 span{
   background:linear-gradient(145deg,#fff0a8,#f4c542);
   color:#4b0877;
+  box-shadow:0 5px 12px rgba(0,0,0,.16);
 }
 @media(max-width:480px){
   .edit-name-results-v273{max-height:220px}

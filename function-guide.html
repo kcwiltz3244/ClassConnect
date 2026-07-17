@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2c063e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>ClassConnect Function Guide</title>
+  <style>
+    :root{--purple:#4d1268;--deep:#2c063e;--gold:#f4c542;--cream:#fffaf0;--lav:#f5eef8;--ink:#2b2430;--muted:#6d6370;--white:#fff;--shadow:0 12px 30px rgba(44,6,62,.12)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#f6eef9 0,#fffaf0 45%,#fff 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+    .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.7rem;padding:.75rem max(1rem,env(safe-area-inset-left));background:rgba(44,6,62,.96);color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+    .back{appearance:none;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:.65rem .9rem;font-weight:800;font-size:.95rem;cursor:pointer;white-space:nowrap}
+    .topbar strong{font-size:1rem;line-height:1.2}.topbar small{display:block;color:#f7dc78;font-size:.72rem;letter-spacing:.07em}
+    .hero{padding:2rem 1rem 1.3rem;text-align:center;background:radial-gradient(circle at top,#7d2aa0 0,#4d1268 48%,#2c063e 100%);color:#fff}
+    .logo{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:19px;background:linear-gradient(135deg,var(--gold) 0 49%,#fff 50%);color:var(--deep);font-size:1.35rem;font-weight:900;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+    .hero h1{font-size:clamp(2rem,8vw,3.4rem);margin:.8rem 0 .2rem}.hero p{max-width:700px;margin:.35rem auto;color:#f7edf9}.kicker{font-size:.76rem;font-weight:900;letter-spacing:.13em;color:#f7dc78!important}
+    .container{width:min(920px,100%);margin:auto;padding:1rem 1rem 5.5rem}
+    .intro{background:#fff;border:1px solid #eadbed;border-radius:20px;padding:1.1rem;margin-top:-.5rem;box-shadow:var(--shadow)}
+    .jump{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+    .jump a{display:flex;align-items:center;min-height:52px;padding:.75rem;border-radius:14px;text-decoration:none;background:var(--lav);border:1px solid #e7d6ec;color:var(--deep);font-weight:800}
+    h2{margin:2rem 0 .75rem;color:var(--deep);font-size:1.45rem}.section-note{margin-top:-.45rem;color:var(--muted)}
+    details{background:#fff;border:1px solid #eadbed;border-radius:16px;margin:.7rem 0;overflow:hidden;box-shadow:0 5px 15px rgba(44,6,62,.06)}
+    summary{list-style:none;cursor:pointer;padding:1rem 3rem 1rem 1rem;font-weight:900;color:var(--deep);position:relative}
+    summary::-webkit-details-marker{display:none}summary:after{content:'＋';position:absolute;right:1rem;top:.85rem;color:var(--purple);font-size:1.3rem}details[open] summary:after{content:'−'}
+    .detail-body{padding:0 1rem 1rem;color:#403746}.detail-body p{margin:.15rem 0 .65rem}.detail-body ul{padding-left:1.2rem;margin:.4rem 0}.detail-body li{margin:.35rem 0}
+    .install-card{background:linear-gradient(145deg,#fff,#fff8dc);border:2px solid #efcf55;border-radius:20px;padding:1rem;margin:1rem 0;box-shadow:var(--shadow)}
+    .install-head{display:flex;align-items:center;gap:.8rem}.device{display:grid;place-items:center;flex:0 0 48px;height:48px;border-radius:14px;background:var(--deep);color:#fff;font-size:1.45rem}.install-card h3{margin:0;color:var(--deep)}
+    .steps{counter-reset:steps;list-style:none;padding:0;margin:.8rem 0 0}.steps li{counter-increment:steps;display:grid;grid-template-columns:34px 1fr;gap:.65rem;align-items:start;margin:.75rem 0}.steps li:before{content:counter(steps);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--deep);font-weight:900}
+    .tip{border-left:5px solid var(--purple);background:var(--lav);padding:.8rem;border-radius:0 12px 12px 0;color:#44354b}
+    .footer{text-align:center;color:var(--muted);font-size:.88rem;padding:1.5rem 1rem 2rem}.home-fixed{position:fixed;left:50%;bottom:max(.9rem,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:30;text-decoration:none;background:var(--gold);color:var(--deep);font-weight:900;border-radius:999px;padding:.85rem 1.2rem;box-shadow:0 9px 25px rgba(44,6,62,.28);border:2px solid #fff;white-space:nowrap}
+    @media(min-width:720px){.jump{grid-template-columns:repeat(4,minmax(0,1fr))}.container{padding-left:1.5rem;padding-right:1.5rem}.intro{padding:1.5rem}details summary{padding:1.15rem 3.5rem 1.15rem 1.2rem}.detail-body{padding:0 1.2rem 1.2rem}.installation-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button class="back" onclick="history.length>1 ? history.back() : location.href='index.html'">← Back</button>
+    <div><strong>ClassConnect Function Guide</strong><small>CLASS OF 1976</small></div>
+  </header>
+
+  <section class="hero">
+    <div class="logo">CC</div>
+    <p class="kicker">ST. MARTINVILLE SENIOR HIGH SCHOOL</p>
+    <h1>How ClassConnect Works</h1>
+    <p>A simple, phone-friendly guide to the features that help our class reconnect, share, celebrate, and remember.</p>
+  </section>
+
+  <main class="container">
+    <section class="intro">
+      <strong>ClassConnect is our living yearbook.</strong>
+      <p>Use this guide whenever you need help finding a feature or understanding what it does. Tap any heading below to open its description.</p>
+    </section>
+
+    <nav class="jump" aria-label="Guide sections">
+      <a href="#start">🏠 Welcome & Home</a>
+      <a href="#stories">📖 Stories & People</a>
+      <a href="#community">💬 Community</a>
+      <a href="#install">📱 Install the App</a>
+    </nav>
+
+    <section id="start">
+      <h2>Welcome and Home</h2>
+      <p class="section-note">The main starting point for ClassConnect.</p>
+      <details><summary>Why I Created ClassConnect</summary><div class="detail-body"><p>The welcome screen explains why Kevin created ClassConnect after the 50th reunion and invites classmates to continue the journey together.</p></div></details>
+      <details><summary>Home Page</summary><div class="detail-body"><p>The Home page is arranged for phone use. It guides classmates through the class story, adding their own story, and then the other important features.</p></div></details>
+      <details><summary>From Then to Now</summary><div class="detail-body"><p>Opens <strong>Our Journey</strong> and connects where the class began with where classmates are now.</p></div></details>
+      <details><summary>Add My Story</summary><div class="detail-body"><p>Lets a classmate add a personal page to the living yearbook.</p><ul><li>Add a biography, career, memories, city and state, birthday, and optional contact details.</li><li>Contact information is shown only when the classmate chooses to share it.</li></ul></div></details>
+      <details><summary>Edit My Story</summary><div class="detail-body"><p>Search for your name, select it, and enter the email connected to your story. Once verified, your existing information opens so you can update it without creating a duplicate.</p></div></details>
+    </section>
+
+    <section id="stories">
+      <h2>Classmates, Stories, and Contact Information</h2>
+      <details><summary>Find a Classmate</summary><div class="detail-body"><p>Search by name to quickly locate a classmate’s living yearbook profile.</p></div></details>
+      <details><summary>Where Are They Now?</summary><div class="detail-body"><p>Browse the stories, photos, memories, careers, and life journeys classmates have chosen to share.</p></div></details>
+      <details><summary>Class Directory</summary><div class="detail-body"><p>Search by name, maiden or class name, city, or state. Contact cards may include phone, email, and mailing address when permission has been given.</p></div></details>
+      <details><summary>Call, Text, Email, and View Story</summary><div class="detail-body"><p>On a phone, tap the available buttons to call, send a text, write an email, or open the classmate’s story.</p></div></details>
+      <details><summary>Classmate Spotlight</summary><div class="detail-body"><p>Highlights a classmate on the Home page and encourages everyone to discover more class stories.</p></div></details>
+      <details><summary>Birthday Spotlight</summary><div class="detail-body"><p>Recognizes classmates who have chosen to share a birthday occurring during the current month.</p></div></details>
+      <details><summary>Who’s New</summary><div class="detail-body"><p>Shows recently added classmates or recently submitted stories.</p></div></details>
+    </section>
+
+    <section id="community">
+      <h2>Community and Class Life</h2>
+      <details><summary>Community Feed</summary><div class="detail-body"><p>A shared space for greetings, class news, announcements, and updates. The Home page also shows a preview of recent Community Feed posts.</p></div></details>
+      <details><summary>Our Journey</summary><div class="detail-body"><p>Tells the history of the Class of 1976—from the early school years through graduation, life’s many journeys, the 50th reunion, and the years ahead.</p></div></details>
+      <details><summary>Events</summary><div class="detail-body"><p>Shows approved upcoming and past class events, including reunions, celebrations, memorials, and gatherings.</p></div></details>
+      <details><summary>Memories Gallery</summary><div class="detail-body"><p>Opens class and reunion photographs so classmates can revisit and share memories.</p></div></details>
+      <details><summary>Legacy Garden</summary><div class="detail-body"><p>An uplifting place to honor classmates who have passed and preserve the memories they left with us.</p></div></details>
+      <details><summary>Privacy</summary><div class="detail-body"><p>Phone numbers, email addresses, mailing addresses, birthdays, and other personal information appear only when the classmate has chosen to share them.</p></div></details>
+    </section>
+
+    <section id="install">
+      <h2>Install ClassConnect on Your Phone</h2>
+      <p class="section-note">Installing creates a ClassConnect icon so you can open it like an app without searching for the web address.</p>
+      <div class="installation-grid">
+        <article class="install-card">
+          <div class="install-head"><div class="device"></div><div><h3>iPhone or iPad</h3><small>Use Safari</small></div></div>
+          <ol class="steps">
+            <li>Open the ClassConnect website in <strong>Safari</strong>.</li>
+            <li>Tap the <strong>Share</strong> button—the square with an upward arrow.</li>
+            <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
+            <li>Keep the name <strong>ClassConnect</strong>, then tap <strong>Add</strong>.</li>
+            <li>Find the ClassConnect icon on your Home Screen and tap it to open.</li>
+          </ol>
+          <p class="tip"><strong>Do not see “Add to Home Screen”?</strong> Tap <em>Edit Actions</em> at the bottom of the Share menu and add it, or confirm the page is open in Safari rather than another browser.</p>
+        </article>
+
+        <article class="install-card">
+          <div class="install-head"><div class="device">🤖</div><div><h3>Android Phone or Tablet</h3><small>Use Chrome</small></div></div>
+          <ol class="steps">
+            <li>Open the ClassConnect website in <strong>Google Chrome</strong>.</li>
+            <li>Tap the <strong>three-dot menu</strong> in the upper-right corner.</li>
+            <li>Tap <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
+            <li>Tap <strong>Install</strong> or <strong>Add</strong> to confirm.</li>
+            <li>Find the ClassConnect icon on your Home Screen or app list and tap it to open.</li>
+          </ol>
+          <p class="tip"><strong>The wording can vary.</strong> Depending on the phone and Chrome version, the option may say “Install app,” “Add to Home screen,” or appear as an install icon in the address bar.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Navigation Tips</h2>
+      <details><summary>Bottom Navigation</summary><div class="detail-body"><p>On a phone, use the bottom buttons for Home, People, Community Feed, Journey, and Events.</p></div></details>
+      <details><summary>Side Menu</summary><div class="detail-body"><p>Tap the menu icon to reach Class Directory, Where Are They Now?, Community Feed, Memories, Our Journey, Events, and Legacy Garden.</p></div></details>
+    </section>
+  </main>
+
+  <a class="home-fixed" href="index.html">Return to ClassConnect</a>
+  <footer class="footer">ClassConnect • St. Martinville Senior High School Class of 1976</footer>
+</body>
+</html>
