@@ -611,3 +611,68 @@ html{scroll-behavior:smooth}
   .welcome-purpose-card-v263::after{font-size:5.5rem;right:8px}
   .welcome-signature-v264{font-size:1.02rem}
 }
+
+/* =========================================================
+   ClassConnect Version 2.6.5 — Natural Home Page Progression
+   ========================================================= */
+.hero-journey-action-v265{
+  margin-top:20px;
+}
+.journey-hero-button-v265{
+  min-width:230px;
+  min-height:52px;
+  font-size:1rem;
+  box-shadow:0 10px 24px rgba(21,0,32,.22);
+}
+.home-action-bridge-v265{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin:20px 0 26px;
+}
+.home-action-card-v265{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  min-height:92px;
+  padding:17px 20px;
+  border:1px solid rgba(75,8,119,.10);
+  border-radius:20px;
+  background:linear-gradient(145deg,#fff,#faf5ff);
+  color:var(--purple);
+  text-align:left;
+  box-shadow:0 10px 25px rgba(49,4,69,.10);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.home-action-card-v265:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 30px rgba(49,4,69,.15);
+}
+.home-action-icon-v265{
+  flex:0 0 52px;
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff2bd,#f4c542);
+  font-size:1.55rem;
+  box-shadow:0 6px 14px rgba(75,8,119,.12);
+}
+.home-action-card-v265 strong,
+.home-action-card-v265 small{
+  display:block;
+}
+.home-action-card-v265 strong{
+  margin-bottom:4px;
+  font-size:1.02rem;
+}
+.home-action-card-v265 small{
+  color:#665b69;
+  line-height:1.35;
+}
+@media(max-width:700px){
+  .home-action-bridge-v265{grid-template-columns:1fr;gap:12px;margin:16px 0 22px}
+  .home-action-card-v265{min-height:82px;padding:14px 16px}
+  .journey-hero-button-v265{width:100%}
+}
