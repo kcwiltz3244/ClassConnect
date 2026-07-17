@@ -989,3 +989,84 @@ html{scroll-behavior:smooth}
   .edit-name-results-v273{max-height:220px}
   .edit-name-results-v273 button{min-height:56px;padding:12px}
 }
+
+
+/* v2.7.6 — Color every feature card beneath Add My Story */
+.quick-access.quick-access-v23{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.quick-access.quick-access-v23 > button{
+  min-height:112px;
+  border:2px solid rgba(244,197,66,.78);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(51,8,76,.17);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.quick-access.quick-access-v23 > button:hover,
+.quick-access.quick-access-v23 > button:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(51,8,76,.24);
+}
+
+.quick-access.quick-access-v23 > button strong{
+  color:#fff;
+}
+
+.quick-access.quick-access-v23 > button small{
+  color:rgba(255,255,255,.88);
+}
+
+.quick-access.quick-access-v23 > button span{
+  background:rgba(255,255,255,.93);
+  color:#4b0877;
+  box-shadow:0 5px 12px rgba(0,0,0,.15);
+}
+
+/* Alternating purple, gold, plum, and warm accent cards */
+.quick-access.quick-access-v23 > button:nth-child(4n+1){
+  background:
+    radial-gradient(circle at 92% 15%,rgba(244,197,66,.30),transparent 28%),
+    linear-gradient(135deg,#4b0877 0%,#6f2596 58%,#351046 100%);
+}
+
+.quick-access.quick-access-v23 > button:nth-child(4n+2){
+  background:
+    radial-gradient(circle at 92% 15%,rgba(255,255,255,.30),transparent 28%),
+    linear-gradient(135deg,#c28f00 0%,#e1b52d 58%,#9b6900 100%);
+}
+
+.quick-access.quick-access-v23 > button:nth-child(4n+3){
+  background:
+    radial-gradient(circle at 92% 15%,rgba(244,197,66,.23),transparent 28%),
+    linear-gradient(135deg,#6a1b52 0%,#8d2b6c 58%,#451039 100%);
+}
+
+.quick-access.quick-access-v23 > button:nth-child(4n+4){
+  background:
+    radial-gradient(circle at 92% 15%,rgba(255,255,255,.24),transparent 28%),
+    linear-gradient(135deg,#7a4b00 0%,#a76b08 58%,#553100 100%);
+}
+
+/* Keep the Function Guide card visually distinct but part of the same family */
+.quick-access.quick-access-v23 .function-guide-card-v273{
+  border:2px solid #f4c542;
+  background:
+    radial-gradient(circle at 92% 18%,rgba(244,197,66,.30),transparent 28%),
+    linear-gradient(135deg,#4b0877 0%,#6b238d 58%,#351046 100%);
+  color:#fff;
+}
+
+@media (max-width:700px){
+  .quick-access.quick-access-v23{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .quick-access.quick-access-v23 > button{
+    width:100%;
+    min-height:92px;
+  }
+}
