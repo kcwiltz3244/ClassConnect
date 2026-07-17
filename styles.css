@@ -763,3 +763,88 @@ html{scroll-behavior:smooth}
   .home-action-step-v266{padding:0 12px;font-size:.95rem}
   .add-story-card-v266{min-height:96px}
 }
+
+
+/* =========================================================
+   ClassConnect Version 2.6.7 — Mobile flow + story card polish
+   ========================================================= */
+.class-today-wrap-v267{
+  max-width:760px;
+  margin:4px auto 30px;
+}
+.class-today-wrap-v267 .hero-stats.hero-stats-v23{
+  width:100%;
+  box-sizing:border-box;
+}
+.add-story-card-v267{
+  width:100%;
+  box-sizing:border-box;
+  overflow:hidden;
+  border:2px solid rgba(244,197,66,.95);
+  background:
+    radial-gradient(circle at 92% 15%,rgba(244,197,66,.30),transparent 28%),
+    linear-gradient(135deg,#4b0877 0%,#6d2793 58%,#3b0758 100%);
+  color:#fff;
+  box-shadow:0 16px 34px rgba(49,4,69,.24),inset 0 0 0 2px rgba(255,255,255,.10);
+}
+.add-story-card-v267::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(255,232,143,.34);
+  border-radius:15px;
+  pointer-events:none;
+}
+.add-story-card-v267 .add-story-icon-v267{
+  position:relative;
+  z-index:1;
+  background:linear-gradient(145deg,#fff4bd,#f4c542);
+  color:#4b0877;
+  box-shadow:0 7px 16px rgba(20,0,31,.28);
+}
+.add-story-copy-v267{
+  position:relative;
+  z-index:1;
+  min-width:0;
+}
+.add-story-copy-v267 em{
+  display:block;
+  margin-bottom:3px;
+  color:#ffe68a;
+  font-size:.68rem;
+  font-style:normal;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.add-story-card-v267 strong{
+  color:#fff;
+  font-size:1.34rem;
+  line-height:1.08;
+}
+.add-story-card-v267 small{
+  margin-top:7px;
+  color:#fff6d5;
+  font-size:.96rem;
+  font-weight:700;
+  line-height:1.35;
+}
+.add-story-card-v267 .action-arrow-v266{
+  position:relative;
+  z-index:1;
+  color:#ffe68a;
+}
+@media(max-width:700px){
+  .home-action-flow-v266,
+  .class-today-wrap-v267{
+    width:100%;
+    max-width:none;
+  }
+  .add-story-card-v267{
+    min-height:118px;
+    padding:18px 20px;
+  }
+  .add-story-card-v267 strong{font-size:1.38rem}
+  .add-story-card-v267 small{font-size:1rem}
+  .class-today-wrap-v267{margin-top:18px;margin-bottom:26px}
+  .class-today-wrap-v267 .hero-stats.hero-stats-v23{margin:0}
+}
