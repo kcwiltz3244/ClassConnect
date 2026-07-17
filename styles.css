@@ -893,3 +893,27 @@ html{scroll-behavior:smooth}
   .contact-details-v27{padding:13px 15px}
   .contact-actions-v27{padding:0 15px 15px}
 }
+
+
+/* v2.7.1 — phone-first Class Directory home card */
+.quick-access.quick-access-v23 .class-directory-card-v271{
+  border:2px solid rgba(212,175,55,.62);
+  background:linear-gradient(135deg,#4b0877 0%,#6f2494 58%,#8b43a9 100%);
+  color:#fff;
+  box-shadow:0 14px 30px rgba(75,8,119,.22);
+}
+.quick-access.quick-access-v23 .class-directory-card-v271 span{
+  background:linear-gradient(145deg,#fff8d9,#f2d979);
+  color:#4b0877;
+}
+.quick-access.quick-access-v23 .class-directory-card-v271 strong{color:#fff;font-size:1.05rem}
+.quick-access.quick-access-v23 .class-directory-card-v271 small{color:#f6eefa}
+.quick-access.quick-access-v23 .class-directory-card-v271::after{color:#f2d979}
+@media(max-width:480px){
+  .quick-access.quick-access-v23 .class-directory-card-v271{
+    min-height:96px;
+    padding:16px 18px;
+  }
+  .quick-access.quick-access-v23 .class-directory-card-v271 strong{font-size:1.08rem}
+  .quick-access.quick-access-v23 .class-directory-card-v271 small{font-size:.78rem;line-height:1.35}
+}
