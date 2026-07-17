@@ -9,7 +9,6 @@
   const status = byId("storyLookupStatus");
   const submitButton = byId("profileSubmitBtn");
   const nameInput = byId("editLookupName");
-  const emailInput = byId("editLookupEmail");
   const nameResults = byId("editNameResults");
   const selectedNameText = byId("editSelectedName");
 
@@ -78,7 +77,6 @@
       nameResults.innerHTML = "";
     }
     setStatus("");
-    emailInput?.focus();
   };
 
   const renderMatches = () => {
@@ -124,7 +122,11 @@
     if (!nameResults.contains(event.target) && event.target !== nameInput) nameResults.hidden = true;
   });
 
-  const requestLookup = (name, email) => jsonp("lookupClassmate", { name, email });
+  const requestLookup = (classmate) => {
+    const id = classmate?.id || classmate?.recordId || "";
+    const name = classmate?.name || nameInput.dataset.selectedName || "";
+    return jsonp("lookupClassmate", { id, name });
+  };
 
   const setField = (name, value = "") => {
     const field = form.elements[name];
@@ -179,20 +181,19 @@
     }
     if (!email) {
       setStatus("Enter the email used with your story.", "error");
-      emailInput?.focus();
-      return;
+        return;
     }
 
     setStatus("Looking for your story…");
     const button = byId("findStoryBtn");
     if (button) button.disabled = true;
     try {
-      const result = await requestLookup(name, email);
+      const result = await requestLookup(selectedClassmate || { name });
       if (result?.item) {
         setStatus("Your story was found.", "success");
         fillForm(result.item);
       } else {
-        setStatus("That email does not match the selected story. Check the email and try again.", "error");
+        setStatus("A story could not be found for the selected classmate.", "error");
       }
     } catch (error) {
       console.error(error);
