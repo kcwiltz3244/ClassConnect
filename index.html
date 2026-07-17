@@ -56,6 +56,7 @@
 
     <nav class="side-nav">
       <button class="active" data-nav="homeView"><span>🏠</span>Home</button>
+      <button data-nav="contactDirectoryView"><span>📇</span>Class Directory</button>
       <button data-nav="peopleView"><span>👥</span>Where Are They Now?</button>
       <button data-nav="feedView"><span>💬</span>Community Feed</button>
       <button data-nav="memoriesView"><span>📸</span>Memories</button>
@@ -164,6 +165,31 @@
         <div id="directoryGrid" class="directory list-mode"></div>
         <p id="directoryEmpty" class="empty-state" hidden>No classmates match your search.</p>
         <div id="pagination" class="pagination"></div>
+      </section>
+
+
+      <section id="contactDirectoryView" class="view contact-directory-view-v27">
+        <div class="directory-hero-v27">
+          <div>
+            <p class="eyebrow gold">CLASS OF 1976</p>
+            <h1>Class Directory</h1>
+            <p>A simple place to find classmates and stay connected. Contact information appears only when each classmate chooses to share it.</p>
+          </div>
+          <span class="directory-book-v27" aria-hidden="true">📇</span>
+        </div>
+
+        <div class="directory-tools-v27">
+          <label class="contact-search-v27">
+            <span>⌕</span>
+            <input id="contactDirectorySearch" type="search" placeholder="Search name, maiden name, city, or state">
+          </label>
+          <p class="privacy-note-v27">🔒 Phone numbers, email addresses, and mailing addresses are shown only with permission.</p>
+        </div>
+
+        <div id="contactDirectoryGrid" class="contact-directory-grid-v27">
+          <div class="contact-directory-loading-v27">Loading the class directory…</div>
+        </div>
+        <p id="contactDirectoryEmpty" class="empty-state" hidden>No classmates match your search.</p>
       </section>
 
       <section id="feedView" class="view">
@@ -380,7 +406,7 @@
 
     <nav class="bottom-nav">
       <button class="active" data-nav="homeView"><span>🏠</span><small>Home</small></button>
-      <button data-nav="peopleView"><span>👥</span><small>People</small></button>
+      <button data-nav="contactDirectoryView"><span>📇</span><small>Directory</small></button>
       <button data-nav="feedView"><span>💬</span><small>Feed</small></button>
       <button data-nav="storyView"><span>📖</span><small>Journey</small></button>
       <button data-nav="eventsView"><span>📅</span><small>Events</small></button>
@@ -526,5 +552,6 @@
 <div id="toast" class="toast"></div>
 <script src="config.js"></script>
 <script src="app.js"></script>
+<script src="directory-v27.js"></script>
 </body>
 </html>
