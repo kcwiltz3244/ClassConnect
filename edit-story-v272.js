@@ -172,16 +172,11 @@
   lookupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const name = selectedClassmate?.name || nameInput.dataset.selectedName || "";
-    const email = emailInput?.value.trim();
 
     if (!name) {
       setStatus("Search for your name and select it from the list.", "error");
       nameInput.focus();
       return;
-    }
-    if (!email) {
-      setStatus("Enter the email used with your story.", "error");
-        return;
     }
 
     setStatus("Looking for your story…");
