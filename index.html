@@ -9,7 +9,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon-192.png" type="image/png">
   <title>ClassConnect — The Living Yearbook</title>
-  <link rel="stylesheet" href="styles.css?v=279">
+  <link rel="stylesheet" href="styles.css?v=281">
 </head>
 <body>
 <section id="introScreen" class="intro-screen intro-purpose-v263">
@@ -59,7 +59,7 @@
       <button data-nav="contactDirectoryView"><span>📇</span>Class Directory</button>
       <button data-nav="peopleView"><span>👥</span>Where Are They Now?</button>
       <button data-nav="feedView"><span>💬</span>Community Feed</button>
-      <button data-nav="memoriesView"><span>📸</span>Memories</button>
+      <button data-nav="memoriesView"><span>📸</span>Photos</button>
       <button data-nav="storyView"><span>📖</span>Our Journey</button>
       <button data-nav="eventsView"><span>📅</span>Events</button>
       <button data-nav="memorialView"><span>🌳</span>Legacy Garden</button>
@@ -114,15 +114,30 @@
           <strong id="messageCount">0</strong>
           <strong id="birthdayCount">0</strong>
         </section>
+        <section class="home-primary-path-v281" aria-label="Continue exploring ClassConnect">
+          <button data-nav="peopleView" class="primary-path-card-v281 people-path-card-v281">
+            <span>👥</span>
+            <div><strong>Where Are They Now?</strong><small>See the stories and journeys of your classmates</small></div>
+            <b>→</b>
+          </button>
+          <button data-nav="memoriesView" class="primary-path-card-v281 photos-path-card-v281">
+            <span>📸</span>
+            <div><strong>Photos Gallery</strong><small>Browse class photos from then to now</small></div>
+            <b>→</b>
+          </button>
+          <button data-nav="eventsView" class="primary-path-card-v281 events-path-card-v281">
+            <span>📅</span>
+            <div><strong>Events</strong><small>See what’s coming up and what we’ve shared</small></div>
+            <b>→</b>
+          </button>
+        </section>
+
         <section class="quick-access quick-access-v23">
           <button data-nav="contactDirectoryView" class="class-directory-card-v271"><span>📇</span><div><strong>Class Directory</strong><small>Phone numbers, emails, and ways to reconnect</small></div></button>
-          <button type="button" class="function-guide-card-v273" onclick="window.location.href='./function-guide.html'"><span>📘</span><div><strong>ClassConnect Function Guide</strong><small>Learn what each feature does</small></div></button>
-          <button data-nav="peopleView"><span>👥</span><div><strong>Where Are They Now?</strong><small>Stories from classmates</small></div></button>
+          <button type="button" class="function-guide-card-v273" onclick="window.location.href='./function-guide.html'"><span>📘</span><div><strong>How to Use ClassConnect</strong><small>Read step-by-step instructions for every feature</small></div></button>
           <button data-open="findStoryModal" class="edit-story-quick-v251"><span>✏️</span><div><strong>Edit My Story</strong><small>Find your yearbook page</small></div></button>
           <button data-nav="feedView"><span>💬</span><div><strong>Community Feed</strong><small>Greetings and updates</small></div></button>
-          <button data-nav="memoriesView"><span>📸</span><div><strong>Memories Gallery</strong><small>Photos through the years</small></div></button>
           <button data-nav="storyView"><span>📖</span><div><strong>Our Journey</strong><small>Why I created ClassConnect</small></div></button>
-          <button data-nav="eventsView"><span>📅</span><div><strong>Events</strong><small>What’s coming up</small></div></button>
           <button data-nav="memorialView"><span>🌳</span><div><strong>Legacy Garden</strong><small>Lives and memories that still bloom</small></div></button>
         </section>
         <section class="home-feature-grid">
@@ -203,7 +218,7 @@
       </section>
 
       <section id="memoriesView" class="view">
-        <div class="page-heading"><div><p class="eyebrow purple">THEN & NOW</p><h1>Memories</h1></div></div>
+        <div class="page-heading"><div><p class="eyebrow purple">THEN & NOW</p><h1>Photos Gallery</h1></div></div>
         <a class="feature-panel" href="https://qrowdpics.com/smsh50reunion" target="_blank" rel="noopener">
           <span>📸</span><div><strong>50th Reunion Gallery</strong><small>View and share reunion photos</small></div><b>›</b>
         </a>

@@ -1070,3 +1070,97 @@ html{scroll-behavior:smooth}
     min-height:92px;
   }
 }
+
+
+/* v2.8.1 — Phone-first primary path under Add My Story */
+.home-primary-path-v281{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin:14px 0 18px;
+}
+
+.primary-path-card-v281{
+  width:100%;
+  min-height:94px;
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) 24px;
+  align-items:center;
+  gap:12px;
+  padding:15px 16px;
+  text-align:left;
+  border:2px solid rgba(244,197,66,.78);
+  border-radius:18px;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(52,12,74,.18);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.primary-path-card-v281:hover,
+.primary-path-card-v281:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(52,12,74,.25);
+}
+
+.primary-path-card-v281 > span{
+  width:50px;
+  height:50px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:rgba(255,255,255,.94);
+  color:#4b0877;
+  font-size:1.45rem;
+  box-shadow:0 5px 12px rgba(0,0,0,.15);
+}
+
+.primary-path-card-v281 strong{
+  display:block;
+  color:#fff;
+  font-size:1.08rem;
+  line-height:1.2;
+  margin-bottom:4px;
+}
+
+.primary-path-card-v281 small{
+  display:block;
+  color:rgba(255,255,255,.88);
+  font-size:.82rem;
+  line-height:1.35;
+}
+
+.primary-path-card-v281 b{
+  color:#f4c542;
+  font-size:1.35rem;
+}
+
+.people-path-card-v281{
+  background:
+    radial-gradient(circle at 92% 15%,rgba(244,197,66,.28),transparent 30%),
+    linear-gradient(135deg,#4b0877 0%,#6b238d 58%,#351046 100%);
+}
+
+.photos-path-card-v281{
+  background:
+    radial-gradient(circle at 92% 15%,rgba(255,255,255,.22),transparent 30%),
+    linear-gradient(135deg,#7a265f 0%,#9d3f7c 58%,#571540 100%);
+}
+
+.events-path-card-v281{
+  background:
+    radial-gradient(circle at 92% 15%,rgba(255,255,255,.24),transparent 30%),
+    linear-gradient(135deg,#9c6a00 0%,#c58b0a 58%,#6a4300 100%);
+}
+
+@media (min-width:760px){
+  .home-primary-path-v281{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .primary-path-card-v281{
+    min-height:126px;
+    grid-template-columns:48px minmax(0,1fr);
+  }
+  .primary-path-card-v281 b{
+    display:none;
+  }
+}
