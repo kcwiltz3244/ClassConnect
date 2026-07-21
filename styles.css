@@ -1240,3 +1240,56 @@ html{scroll-behavior:smooth}
     font-size:1.3rem;
   }
 }
+
+
+/* v2.8.3 — Return to Home buttons on every feature page */
+.return-home-wrap-v283{
+  display:flex;
+  justify-content:flex-start;
+  margin:0 0 14px;
+}
+
+.return-home-button-v283{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:42px;
+  padding:10px 15px;
+  border:2px solid #5b168a;
+  border-radius:999px;
+  background:#fff;
+  color:#4b0877;
+  font-weight:800;
+  font-size:.92rem;
+  box-shadow:0 5px 14px rgba(51,8,76,.12);
+}
+
+.return-home-button-v283 span{
+  font-size:1.1rem;
+  line-height:1;
+}
+
+.return-home-button-v283:hover,
+.return-home-button-v283:focus-visible{
+  background:#f8f0ff;
+  transform:translateY(-1px);
+}
+
+@media (max-width:600px){
+  .return-home-wrap-v283{
+    position:sticky;
+    top:68px;
+    z-index:12;
+    margin-bottom:12px;
+    pointer-events:none;
+  }
+
+  .return-home-button-v283{
+    min-height:40px;
+    padding:9px 13px;
+    font-size:.88rem;
+    pointer-events:auto;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px);
+  }
+}
