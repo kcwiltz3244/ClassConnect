@@ -1164,3 +1164,79 @@ html{scroll-behavior:smooth}
     display:none;
   }
 }
+
+
+/* v2.8.2 — Full-width How to Use ClassConnect card after Events */
+.help-guide-section-v282{
+  margin:0 0 18px;
+}
+
+.help-guide-card-v282{
+  width:100%;
+  display:grid;
+  grid-template-columns:54px minmax(0,1fr);
+  gap:13px;
+  align-items:center;
+  padding:16px;
+  text-align:left;
+  border:2px solid #f4c542;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 94% 14%,rgba(244,197,66,.30),transparent 30%),
+    linear-gradient(135deg,#32104a 0%,#5b168a 58%,#271033 100%);
+  color:#fff;
+  box-shadow:0 10px 24px rgba(51,8,76,.20);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.help-guide-card-v282:hover,
+.help-guide-card-v282:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(51,8,76,.28);
+}
+
+.help-guide-card-v282 > span{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:linear-gradient(145deg,#fff4b9,#f4c542);
+  color:#4b0877;
+  font-size:1.45rem;
+  box-shadow:0 5px 12px rgba(0,0,0,.16);
+}
+
+.help-guide-card-v282 strong{
+  display:block;
+  color:#fff;
+  font-size:1.08rem;
+  line-height:1.2;
+  margin-bottom:5px;
+}
+
+.help-guide-card-v282 small{
+  display:block;
+  color:#f9eaa8;
+  line-height:1.4;
+}
+
+.help-guide-card-v282 b{
+  grid-column:2;
+  justify-self:start;
+  color:#f4c542;
+  font-size:.88rem;
+  margin-top:3px;
+}
+
+@media (max-width:520px){
+  .help-guide-card-v282{
+    grid-template-columns:48px minmax(0,1fr);
+    padding:14px;
+  }
+  .help-guide-card-v282 > span{
+    width:46px;
+    height:46px;
+    font-size:1.3rem;
+  }
+}
